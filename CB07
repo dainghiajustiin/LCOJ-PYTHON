@@ -1,0 +1,16 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    pi = 3.14
+    r = float(input())
+
+    print(f"{2*pi*r:.3f}", end=" ")
+    print(f"{pi*r*r:.3f}")
+
+    return
+
+solve()
