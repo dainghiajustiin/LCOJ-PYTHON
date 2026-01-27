@@ -1,0 +1,33 @@
+import math
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b, c = list(map(int, input().split()))
+
+    if(a == 0):
+        if(b == 0):
+            if(c == 0): print("WOW")
+            else: print("NO")
+        else:
+            ans = -c/b
+            print(f"{ans:.2f}")
+    else:
+        delta = b*b - 4*a*c
+        if(delta >= 0):
+            x1 = (-b - math.sqrt(delta))/(2*a)
+            x2 = (-b + math.sqrt(delta))/(2*a)
+
+            if(x1 == x2): print(f"{x1:.2f}")
+            else:
+                print(f"{x1:.2f}", end=" ")
+                print(f"{x2:.2f}", end=" ")
+        else:
+            print("NO")
+    return
+
+solve()
