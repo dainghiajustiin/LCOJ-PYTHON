@@ -1,0 +1,16 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    T = int(input())
+    for _ in range(T):
+        n = int(input())
+        ans = 2*n/(n + 1)
+        print(f"{ans:.8f}")
+
+    return
+
+solve()
