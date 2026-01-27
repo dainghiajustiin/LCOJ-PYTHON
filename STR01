@@ -1,0 +1,15 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    s = input()
+    s = s.lower()
+
+    print(s)
+
+    return
+
+solve()
