@@ -1,0 +1,14 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = input()
+    if(n[0] == '-'): n = n[1:]
+    print(len(n))
+
+    return
+
+solve()
