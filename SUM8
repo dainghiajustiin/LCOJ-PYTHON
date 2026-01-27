@@ -1,0 +1,21 @@
+import math
+
+def calc(i, n):
+    if(i == n): return math.sqrt(n)
+    return math.sqrt(i + calc(i + 1, n))
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    T = int(input())
+    for _ in range(T):
+        n = int(input())
+        print(f"{calc(1, n):.5f}")
+
+    return
+
+solve()
