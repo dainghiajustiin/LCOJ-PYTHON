@@ -1,0 +1,25 @@
+def isp(n):
+    if(n == 2 or n == 3): return True
+    if(n&1 == 0): return False 
+    if(n%3 == 0): return False
+
+    for i in range(5, n, 6):
+        if(i*i > n): break
+        if(n % i == 0): return False 
+        if(n % (i + 2) == 0): return False        
+    return (n > 1)
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    if(isp(n)): print("YES")
+    else: print("NO")
+    
+    return
+
+solve()
