@@ -1,0 +1,22 @@
+MAX_N = 10**6 + 2
+lst = [0]
+
+def init():
+
+    for i in range(1, MAX_N):
+        res = lst[i-1] + 1.0/i 
+        lst.append(res)
+
+    return
+
+def solve():
+    init()
+
+    T = int(input())
+    for _ in range(T):
+        n = int(input())
+        print(f"{lst[n]:.5f}")
+
+    return
+
+solve()
