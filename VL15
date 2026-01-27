@@ -1,0 +1,31 @@
+def gcd(a, b):
+    if(b == 0): return a 
+    return gcd(b, a%b)
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b = list(map(int, input().split()))
+    
+    if(b == 0):
+        print("INVALID")
+    else:
+        g = gcd(abs(a), abs(b))
+
+        if(a == 0):
+            print(0)
+        else:
+            if(b < 0):
+                a = -a 
+                b = -b 
+            
+            if(b//g == 1): print(a//g)
+            else: print(a//g, b//g)
+
+    return
+
+solve()
