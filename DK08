@@ -1,0 +1,32 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, char, b = list(map(str, input().split()))
+
+    if(char == '+'):
+        A = float(a)
+        B = float(b)
+        print(f"{A + B:.2f}")
+    elif(char == '-'):
+        A = float(a)
+        B = float(b)
+        print(f"{A - B:.2f}")
+    elif(char == '*'):
+        A = float(a)
+        B = float(b)
+        print(f"{A * B:.2f}")
+    else:
+        A = float(a)
+        B = float(b)
+        if(B == 0):
+            print("Math Error")
+        else:
+            print(f"{A/B:.2f}")
+
+    return
+
+solve()
