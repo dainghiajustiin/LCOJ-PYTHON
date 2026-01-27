@@ -1,0 +1,19 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b = list(map(int, input().split()))
+    ok = True 
+
+    for i in range(b - 1, a, -1):
+        if(i % 3 == 0):
+            print(i, end=" ")
+            ok = False
+    if(ok == True):
+        print("NOT FOUND")
+    return
+
+solve()
