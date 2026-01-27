@@ -1,0 +1,22 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    S = 0
+    cnt = 0
+
+    for elm in lst:
+        if(elm&1):
+            S += elm 
+            cnt += 1
+    
+    print(f"{S/cnt:.4f}")
+
+    return
+
+solve()
