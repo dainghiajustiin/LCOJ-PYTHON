@@ -1,0 +1,12 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    print("Lap Trinh Khong Kho!")
+
+    return
+
+solve()
