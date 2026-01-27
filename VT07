@@ -1,0 +1,20 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    lst = list(map(int, input().split()))
+    ok = False 
+
+    for i in range(10):
+        if(lst[10] == lst[i]):
+            ok = True 
+            print(i + 1, end=' ')
+
+    if(not ok): print(-1)
+
+    return
+
+solve()
