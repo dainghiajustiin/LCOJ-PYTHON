@@ -1,0 +1,22 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, W = list(map(int, input().split()))
+    lst = list(map(int, input().split()))
+    ans = 0
+
+    for mask in range(1, 1 << n):
+        cur = 0
+        for i in range(0, n):
+            if((mask >> i) & 1): cur += lst[i]
+        if(cur <= W): ans = max(ans, cur)
+
+    print(ans)
+
+    return
+
+solve()
