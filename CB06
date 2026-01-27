@@ -1,0 +1,15 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    r, d = list(map(int, input().split()))
+
+    print(2*r + 2*d)
+    print(r*d)
+
+    return
+
+solve()
