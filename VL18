@@ -1,0 +1,20 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = input()
+    n = n[::-1]
+
+    i = 0
+    while(i < len(n) and n[i] == '0'):
+        i += 1
+    if(i == len(n)): i -= 1
+    n = n[i:]
+    print(n)
+
+    return
+
+solve()
