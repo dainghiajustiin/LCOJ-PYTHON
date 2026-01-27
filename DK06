@@ -1,0 +1,19 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b = list(map(int, input().split()))
+
+    if(a == 0):
+        if(b == 0): print("WOW")
+        else: print("NO")
+    else:
+        ans = -b/a
+        print(f"{ans:.2f}")
+
+    return
+
+solve()
