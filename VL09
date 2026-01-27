@@ -1,0 +1,23 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    X, N = list(map(str, input().split()))
+    x = float(X)
+    n = int(N)
+    fact = 1
+    mul = x 
+    S = 0.0 
+    
+    for i in range(1, n + 1):
+        S += mul/fact
+        fact *= (i + 1)
+        mul *= x
+
+    print(f"{S:.2f}")
+    return
+
+solve()
