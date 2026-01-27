@@ -1,0 +1,24 @@
+import math
+
+MAXN = 10**4 + 7
+lst = [0]
+
+def init():
+
+    for i in range(1, MAXN):
+        lst.append(math.sqrt(2 + lst[-1]))
+
+    return
+
+def solve():
+    init()
+
+    T = int(input())
+
+    for _ in range(T):
+        n = int(input())
+        print(f"{lst[n]:.5f}")
+
+    return
+
+solve()
