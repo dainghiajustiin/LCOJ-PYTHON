@@ -1,0 +1,15 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    S = 1 - 1.0/(n + 1)
+
+    print(f"{S:.5f}")
+
+    return
+
+solve()
