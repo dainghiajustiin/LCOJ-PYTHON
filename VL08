@@ -1,0 +1,16 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b = list(map(int, input().split()))
+    S = 0
+    for i in range(a, b + 1):
+        if(i&1 == 0): S += i 
+    print(S)
+
+    return
+
+solve()
