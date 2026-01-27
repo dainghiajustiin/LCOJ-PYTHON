@@ -1,0 +1,32 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    T = int(input())
+
+    for _ in range(T):
+        s = input()
+        s = s.lower()
+
+        lst = []
+        for elm in s:
+            lst.append(elm)
+
+        ok = True 
+        for i in range(len(lst)):
+            if(lst[i] >= 'a' and lst[i] <= 'z'):
+                if(ok):
+                    ok = False 
+                    lst[i] = chr(ord(lst[i]) - ord('a') + ord('A'))
+            else: ok = True
+
+        for elm in lst:
+            print(elm, end='')
+        print()
+
+    return
+
+solve()
