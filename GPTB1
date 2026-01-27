@@ -1,0 +1,36 @@
+def gcd(a, b):
+    if(b == 0): return a 
+    return gcd(b, a%b)
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    lst = list(map(int, input().split()))
+    
+    a = lst[0]
+    b = lst[1]
+    c = lst[2]
+    d = lst[3]
+    e = lst[4]
+    f = lst[5]
+
+    D = a*e - b*d
+    Dx = c*e - b*f 
+    Dy = a*f - c*d
+
+
+    if(D != 0):
+        print(f"{Dx/D:.2f} {Dy/D:.2f}")
+    else:
+        if(Dx == 0 and Dy == 0):
+            print("VOSONGHIEM")
+        else:
+            print("VONGHIEM")
+
+    return
+
+solve()
