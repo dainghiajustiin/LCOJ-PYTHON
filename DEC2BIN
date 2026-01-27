@@ -1,0 +1,22 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+
+    while(nTest > 0):
+        nTest -= 1
+
+        n = int(input())
+        ok = False
+        for i in range(63, -1, -1):
+            if((n >> i) & 1): ok = True 
+            if(ok): print((n >> i) & 1, end = "")
+
+        print()
+    return
+
+solve()
