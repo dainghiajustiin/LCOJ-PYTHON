@@ -1,0 +1,18 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+
+    if(0 < n and n <= 100000):
+        if((n % 4 == 0 and n % 100 != 0) or n % 400 == 0): print("YES")
+        else: print("NO")
+    else:
+        print("INVALID")
+
+    return
+
+solve()
