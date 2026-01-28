@@ -1,0 +1,6 @@
+a, b, c, k = map(float, input().split())
+
+if(max({a, b, c}) - min({a, b, c}) <= k):
+    print('Yes')
+else:
+    print('No')
