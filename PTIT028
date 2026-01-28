@@ -1,0 +1,15 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = float(input())
+    if(n >= 0):
+        print(int(n), int(n) + 1)
+    else:
+        print(int(n) - 1, int(n))
+    return
+
+solve()
