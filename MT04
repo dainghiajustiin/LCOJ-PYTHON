@@ -1,0 +1,31 @@
+MAXN = 123
+
+arr = [[0 for _ in range(MAXN)] for _ in range(MAXN)]
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, m, k = list(map(int, input().split()))
+    lst = list(map(int, input().split()))
+    cnt = 0
+    S = 0
+
+    for i in range(n):
+        for j in range(m):
+            arr[i][j] = lst[cnt]
+            cnt += 1
+    
+    for i in range(n):
+        seq = arr[i][0:m]
+        if(i + 1 == k): seq.sort()
+        for j in range(m):
+            print(seq[j], end=' ')
+        print()
+
+    return
+
+solve()
