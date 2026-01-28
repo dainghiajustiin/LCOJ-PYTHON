@@ -1,0 +1,25 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    Str = input()
+    cnt = [0] * 1010
+
+    Str = Str.lower()
+    for elm in Str:
+        cnt[ord(elm)] += 1
+    
+    for i in range(ord('0'), ord('9') + 1):
+        if(cnt[i] > 0):
+            print(chr(i), cnt[i])
+
+    for i in range(ord('a'), ord('z') + 1):
+        if(cnt[i] > 0):
+            print(chr(i), cnt[i])
+
+    return
+
+solve()
