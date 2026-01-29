@@ -1,0 +1,13 @@
+TASK = "game"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+def get(a, b, cnt):
+    if(cnt == 2):
+        return 0
+    return max(get(a - 1, b, cnt + 1) + a, get(a, b - 1, cnt + 1) + b)
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    a, b = list(map(int, fileIn.readline().split()))
+    ans = get(a, b, 0)
+    fileOut.write(str(ans))
