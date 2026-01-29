@@ -1,0 +1,15 @@
+TASK = "powerofprime"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    T = int(fileIn.readline().strip())
+
+    for i in range(T):
+        N , p = map(int, fileIn.readline().split())
+        i = 1
+        cnt = 0
+        while(N >= p**i):
+            cnt += N//(p**i)
+            i += 1
+        fileOut.write(str(cnt) + '\n')
