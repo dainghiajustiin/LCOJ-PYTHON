@@ -1,0 +1,23 @@
+TASK = "Minrange"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    N, k = list(map(int, fileIn.readline().split()))
+    lst = list(map(int, fileIn.readline().split()))
+    queue = []
+    
+    for i in range(0, k):
+        while(len(queue) > 0 and lst[queue[-1]] >= lst[i]):
+            queue.pop()
+        queue.append(i)
+    fileOut.write(str(lst[queue[0]]) + '\n')
+
+    for i in range(k, N):
+        j = i - k + 1
+        while(len(queue) > 0 and queue[0] < j):
+            queue.pop(0)
+        while(len(queue) > 0 and lst[queue[-1]] >= lst[i]):
+            queue.pop()
+        queue.append(i)
+        fileOut.write(str(lst[queue[0]]) + '\n')
