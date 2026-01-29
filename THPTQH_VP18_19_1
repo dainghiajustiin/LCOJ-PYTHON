@@ -1,0 +1,16 @@
+TASK = "DELETE"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    S = fileIn.readline().strip()
+    posDel = len(S) - 1
+    
+    for i in range(len(S) - 1):
+        if(S[i] < S[i+1]):
+            posDel = i
+            break
+
+    for i in range(len(S)):
+        if(i != posDel):
+            fileOut.write(S[i])
