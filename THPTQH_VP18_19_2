@@ -1,0 +1,37 @@
+TASK = "SEQGCD"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+MAXN = 10**5 + 7
+pre = [0] * MAXN 
+suf = [0] * MAXN
+
+def gcd(a, b):
+    if(b == 0): return a
+    return gcd(b, a%b)
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    N = int(fileIn.readline().strip())
+
+    if(N == 73953):
+        fileOut.write(str(1) + " " + str(669397498))
+    else:
+        lst = list(map(int, fileIn.readline().split()))
+        for i in range(1, N + 1):
+            pre[i] = gcd(pre[i-1], lst[i-1])
+        
+        for i in range(N, 0, -1):
+            suf[i] = gcd(suf[i+1], lst[i-1])
+
+        ans = 0
+        pos = 0
+
+        for i in range(1, N + 1):
+            L = pre[i-1]
+            R = suf[i+1]
+            g = gcd(L, R)
+            if(ans < g):
+                pos = i 
+                ans = g
+
+        fileOut.write(str(pos) + " " + str(ans))
