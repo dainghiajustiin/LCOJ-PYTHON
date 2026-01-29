@@ -1,0 +1,13 @@
+TASK = "cntnum"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+def gcd(a, b):
+    if(b == 0): return a
+    return gcd(b, a%b)
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    a, b, c, d = list(map(int, fileIn.readline().split()))
+    lcm = c*d//gcd(c, d)
+    ans = b - a + 1 - (b//c - (a-1)//c) - (b//d - (a-1)//d) + (b//lcm - (a-1)//lcm)
+    fileOut.write(str(ans))
