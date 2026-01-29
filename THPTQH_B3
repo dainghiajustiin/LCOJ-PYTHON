@@ -1,0 +1,31 @@
+TASK = "chiak"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+def fix(N, MOD):
+    N %= MOD 
+    if(N < 0): N += MOD
+    return N
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    n, k = list(map(int, fileIn.readline().split()))
+    lst = list(map(int, fileIn.readline().split()))
+    pre = [0]
+    dct = {0 : 1}
+    ans = 0
+
+    for i in range(n):
+        num = fix(pre[-1] + lst[i], k)
+        pre.append(num)        
+    
+    for i in range(1, len(pre)):
+        v = fix(pre[i] - k, k)
+        if(v in dct):
+            ans += dct[v]
+        
+        if(pre[i] in dct):
+            dct[pre[i]] += 1
+        else:
+            dct.update({pre[i] : 1})
+
+    fileOut.write(str(ans))
