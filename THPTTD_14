@@ -1,0 +1,25 @@
+TASK = "REMOVE"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    n, k = list(map(int, fileIn.readline().split()))
+    lst = list(map(int, fileIn.readline().split()))
+    
+    lst.insert(0, 0)
+    for i in range(1, len(lst)):
+        lst[i] += lst[i-1]
+
+    ans = n
+    dct = {0 : 0}
+
+    for i in range(1, len(lst)):
+        v = lst[i] - k 
+        if(v in dct):
+            curLen = i - dct[v]
+            ans = min(ans, n - curLen)
+        
+        if(lst[i] not in dct):
+            dct.update({lst[i] : i})
+    
+    fileOut.write(str(ans))
