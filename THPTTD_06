@@ -1,0 +1,12 @@
+n = int(input())
+STR = input()
+STR += STR[-1]
+cnt = 0
+
+i = 0
+while(i < len(STR) - 1):
+    if(STR[i] != STR[i+1]): i += 1
+    i += 1
+    cnt += 1
+
+print(cnt)
