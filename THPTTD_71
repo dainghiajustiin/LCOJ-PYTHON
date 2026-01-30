@@ -1,0 +1,10 @@
+TASK = "SUMN"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    s = fileIn.readline().strip()
+    n = 0
+    for elm in s:
+        n += ord(elm) - ord('0')
+    fileOut.write(str(n))
