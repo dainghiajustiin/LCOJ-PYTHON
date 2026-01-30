@@ -1,0 +1,29 @@
+TASK = "TDOAN"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    n, k = list(map(int, fileIn.readline().split()))
+    lst = list(map(int, fileIn.readline().split()))
+    pre = [0]
+    for i in range(len(lst)):
+        pre.append(pre[-1] + lst[i])
+    pos = -1
+    Len = 10**9
+    dct = {0 : 0}
+    for i in range(1, len(pre)):
+        v = pre[i] - k
+
+        if(v in dct):
+            curLen = i - dct[v]
+            if(curLen < Len):
+                pos = dct[v] + 1
+                Len = curLen
+
+        if(pre[i] not in dct):
+            dct.update({pre[i] : i})
+    
+    if(pos == -1):
+        fileOut.write(str(0))
+    else:
+        fileOut.write(str(pos) + ' ' + str(Len))
