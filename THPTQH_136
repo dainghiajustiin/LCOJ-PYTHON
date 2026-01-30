@@ -1,0 +1,18 @@
+TASK = "xaucon"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    S = fileIn.readline().strip()
+    S += '1'
+    last = -1 
+    ans = 0
+    for i in range(len(S)):
+        if(S[i] == '0'):
+            if(last == -1): last = i 
+        else:
+            if(last != -1):
+                ans = max(ans, i - last)
+                last = -1
+
+    fileOut.write(str(ans))
