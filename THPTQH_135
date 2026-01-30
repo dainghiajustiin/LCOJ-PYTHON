@@ -1,0 +1,8 @@
+TASK = "DAYSO"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    n = int(fileIn.readline().strip())
+    ans = n*(n+1)//2
+    fileOut.write(str(ans))
