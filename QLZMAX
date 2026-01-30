@@ -1,0 +1,55 @@
+INF = 10**12
+MAXN = 5*10**5 + 6
+IT = [0 for _ in range(4*MAXN)]
+LAZY = [0 for _ in range(4*MAXN)]
+
+def down(id):
+    if(LAZY[id] == 0): return
+    IT[id<<1] += LAZY[id]
+    LAZY[id<<1] += LAZY[id]
+
+    IT[id<<1|1] += LAZY[id]
+    LAZY[id<<1|1] += LAZY[id]
+
+    LAZY[id] = 0
+
+def get(id, L, R, u, v):
+    if(R < u or v < L): return -INF
+    if(u <= L and R <= v): return IT[id]
+
+    down(id)
+    M = (L + R) >> 1
+
+    return max(get(id << 1, L, M, u, v), 
+            get(id << 1|1, M + 1, R, u, v))
+
+def upd(id, L, R, u, v, VALUE):
+    if(R < u or v < L): return 
+    if(u <= L and R <= v):
+        IT[id] += VALUE 
+        LAZY[id] += VALUE 
+        return 
+
+    down(id)
+    M = (L + R) >> 1 
+
+    upd(id << 1, L, M, u, v, VALUE)
+    upd(id << 1|1, M + 1, R, u, v, VALUE)
+    IT[id] = max(IT[id << 1], IT[id << 1|1])
+
+
+n, q = list(map(int, input().split()))
+
+for _ in range(q):
+    lst = list(map(int, input().split()))
+
+    if(lst[0] == 0):
+        L = lst[1]
+        R = lst[2] 
+        VALUE = lst[3]
+        upd(1, 1, n, L, R, VALUE)
+    else:
+        L = lst[1]
+        R = lst[2]
+        ans = get(1, 1, n, L, R)
+        print(ans)
