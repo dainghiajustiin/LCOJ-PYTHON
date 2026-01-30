@@ -1,0 +1,32 @@
+import math
+
+TASK = "TPRIME"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+MAXN = 10**6 + 7
+ok = [True] * MAXN 
+
+def snt():
+    ok[0] = ok[1] = False 
+    for i in range(2, int(MAXN**0.5) + 1):
+        if(ok[i] == True):
+            for j in range(i*i, MAXN, i):
+                ok[j] = False
+
+snt()
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    n = int(fileIn.readline().strip())
+    lst = list(map(int, fileIn.readline().split()))
+    dct = {}
+    cnt = 0
+
+    for elm in lst:
+        a = int(math.sqrt(elm))
+        if(a*a == elm and ok[a] == True):
+            if(a not in dct):
+                dct.update({a : True})
+                cnt += 1
+    
+    fileOut.write(str(cnt))
