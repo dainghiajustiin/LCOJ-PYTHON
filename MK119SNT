@@ -1,0 +1,30 @@
+MAXN = 10**6 + 7
+pre = [0] * MAXN 
+lp = [0] * MAXN 
+pr = []
+
+def init():
+    lp[0] = lp[1] = 1
+    for i in range(2, MAXN):
+        if(lp[i] == 0):
+            lp[i] = i
+            pr.append(i)
+        for j in range(len(pr)):
+            if(i*pr[j] >= MAXN): break 
+            lp[i*pr[j]] = pr[j]
+            if(lp[i] == pr[j]): break
+        
+        pre[i] = pre[i-1] + (1 if(lp[i] == i) else 0)
+    return
+
+def solve():
+    init()
+
+    T = int(input())
+    for i in range(T):
+        L, R = map(int, input().split())
+        print(pre[R] - pre[L-1])
+
+    return
+
+solve()
