@@ -1,0 +1,22 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+
+    posMin = 0
+    posMax = 0
+
+    for i in range(len(lst)):
+        if(lst[i] > lst[posMax]): posMax = i 
+        if(lst[i] < lst[posMin]): posMin = i 
+
+    print(lst[posMin], posMin + 1, lst[posMax], posMax + 1)
+
+    return
+
+solve()
