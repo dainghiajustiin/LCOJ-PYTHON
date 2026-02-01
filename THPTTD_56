@@ -1,0 +1,33 @@
+TASK = "fibo"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+f = [0, 1]
+
+def isp(n):
+    if(n == 2 or n == 3): return True
+    if(n&1 == 0): return False
+    if(n%3 == 0): return False
+
+    for i in range(5, n, 6):
+        if(i*i > n): break
+        if(n % i == 0): return False 
+        if(n % (i + 2) == 0): return False 
+    return (n > 1)
+
+def cnt(N):
+    i = 0
+    res = 0
+    while(f[i] <= N):
+        if(isp(f[i])):
+            res += 1
+        i += 1
+    return res
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    
+    for i in range(2, 100): 
+        f.append(f[-1] + f[-2])
+
+    n, m = list(map(int, fileIn.readline().split()))
+    fileOut.write(str(cnt(m) - cnt(n - 1)))
