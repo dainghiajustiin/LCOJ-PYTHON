@@ -1,0 +1,29 @@
+MAXN = 3*10**5 + 5
+ok = [True] * MAXN 
+
+def init():
+    ok[0] = ok[1] = False 
+    for i in range(2, int(MAXN**0.5) + 1):
+        if(ok[i] == True):
+            for j in range(i*i, MAXN, i):
+                ok[j] = False
+
+    return
+
+def solve():
+    init()
+
+    lst = []
+    n = int(input())
+
+    for i in range(2, n):
+        if(i >= n - i): break
+        if(ok[i] and ok[n - i]): lst.append([i, n - i])
+
+    print(len(lst))
+    for elm in lst:
+        print(elm[0], elm[1])
+
+    return
+
+solve()
