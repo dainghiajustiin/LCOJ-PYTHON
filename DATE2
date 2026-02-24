@@ -1,0 +1,8 @@
+from datetime import datetime, timedelta 
+
+timeS = int(input())
+startTime = datetime(1, 1, 1, 0, 0, 0)
+nextTime = startTime + timedelta(seconds = timeS)
+ans = nextTime.strftime("%H:%M:%S")
+print(ans)
+
