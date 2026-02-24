@@ -1,0 +1,18 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b = list(map(int, input().split()))
+    ans = 0 
+
+    for i in range(int(b**0.5) + 1):
+        if(a <= i*i): ans += 1
+
+    print(ans)
+
+    return
+
+solve()
