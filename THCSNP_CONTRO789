@@ -1,0 +1,27 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    posL = -1
+    posR = -1
+
+    for i in range(n):
+        if(a[i] != b[i]):
+            if(posL == -1): posL = i 
+            posR = i 
+    
+    while(posL > 0 and b[posL-1] <= b[posL]): posL -= 1 
+    while(posR < n - 1 and b[posR+1] >= b[posR]): posR += 1 
+
+    print(posL + 1, posR + 1)
+
+    return
+
+solve()
