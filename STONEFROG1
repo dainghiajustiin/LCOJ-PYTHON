@@ -1,0 +1,19 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    dp = [10**18] * (n+5)
+
+    dp[0] = 0
+    for i in range(n):
+        if(i+1 < n): dp[i+1] = min(dp[i+1], dp[i] + abs(lst[i] - lst[i+1]))
+        if(i+2 < n): dp[i+2] = min(dp[i+2], dp[i] + abs(lst[i] - lst[i+2]))
+    print(dp[n-1])
+    return
+
+solve()
