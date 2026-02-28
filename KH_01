@@ -1,0 +1,19 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    s = n*(n+1)//2 
+
+    for elm in lst:
+        s -= elm 
+    
+    print(s)
+
+    return
+
+solve()
