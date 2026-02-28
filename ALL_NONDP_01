@@ -1,0 +1,35 @@
+lst = []
+
+def ok(x, m):
+    res = 0
+    for elm in lst:
+        res += elm//x 
+    return (True if res >= m else False)
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    for elm in a:
+        lst.append(elm)
+    
+    ans = 0
+    L = 1
+    R = 10**10
+    while(L <= R):
+        M = (L + R)//2
+        if(ok(M, m) == True):
+            ans = max(ans, M)
+            L = M + 1
+        else:
+            R = M - 1
+    print(ans)
+    
+    return
+
+solve()
