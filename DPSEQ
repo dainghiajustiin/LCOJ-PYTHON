@@ -1,0 +1,50 @@
+MAXN = 10101
+INF = 10**18
+
+node = [-INF]  * (4*MAXN)
+
+def update(id, l, r, pos, value):
+    if(pos < l or r < pos):
+        return 
+    if(l == r):
+        node[id] = value
+        return 
+    
+    m = (l + r)//2
+    update(id*2, l, m, pos, value)
+    update(id*2+1, m+1, r, pos, value)
+    node[id] = max(node[id*2], node[id*2+1])
+
+def get(id, l, r, u, v):
+    if(v < l or r < u):
+        return -INF 
+    if(u <= l and r <= v):
+        return node[id]
+    
+    m = (l + r)//2
+    return max(get(id*2, l, m, u, v), get(id*2+1, m+1, r, u, v))
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = 0
+
+    update(1, 1, n+1, 1, 0)
+    for i in range(n):
+        curPos = i + 2
+        L = max(curPos - k, 1)
+        R = curPos - 1
+        curRes = get(1, 1, n+1, L, R) + a[i]
+        update(1, 1, n+1, curPos, curRes)
+        ans = max(ans, curRes)
+    print(ans)
+
+    return
+
+solve()
