@@ -1,0 +1,17 @@
+import math 
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    a = int(math.sqrt(n))
+    print(a)
+
+
+    return
+
+solve()
