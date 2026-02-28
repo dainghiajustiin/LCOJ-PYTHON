@@ -1,0 +1,23 @@
+def sum(n):
+    res = 0
+    while(n > 0):
+        res += n%10 
+        n //= 10 
+    return res
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+
+    while(n > 9):
+        n = sum(n)
+    print(n)
+
+    return
+
+solve()
