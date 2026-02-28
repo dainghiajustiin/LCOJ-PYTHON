@@ -1,0 +1,31 @@
+import sys
+import bisect
+
+MAXN = 100
+Tribo = [0, 0, 1]
+
+def init():
+    for i in range(3, MAXN):
+        Tribo.append(Tribo[i-1] + Tribo[i-2] + Tribo[i-3])
+    return
+
+def solve():
+    init()
+
+    list_data = sys.stdin.read().split()
+
+    if not list_data:
+        return
+
+    for N in list_data:
+        try:
+            n = int(N)
+            idx = bisect.bisect_left(Tribo, n)
+            
+            if idx < len(Tribo):
+                print(Tribo[idx])
+        finally:
+            continue
+    return
+
+solve()
