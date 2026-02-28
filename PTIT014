@@ -1,0 +1,14 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    a = 1 << n 
+    print(a%10)
+
+    return
+
+solve()
