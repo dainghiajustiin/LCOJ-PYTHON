@@ -1,0 +1,34 @@
+MAXN = 2010
+
+Fibo = [0] * MAXN
+Ok = [True] * MAXN
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    lst = []
+    n, k = map(int, input().split())
+    if(k > 0): lst = list(map(int, input().split()))
+
+    for elm in lst:
+        Ok[elm] = False 
+
+    Fibo[0] = 1
+    if(Ok[1] == False):
+        Fibo[1] = 0
+    else:
+        Fibo[1] = 1 
+
+    for i in range(2, n+1):
+        if(Ok[i] == True):
+            Fibo[i] = Fibo[i-1] + Fibo[i-2]
+    
+    print(Fibo[n])
+
+    return
+
+solve()
