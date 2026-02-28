@@ -1,0 +1,21 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    MOD = 10**9 + 7
+    n = int(input())
+    n -= 1
+    a = 1 
+    b = 7
+    while(n > 0):
+        if(n&1): a = a*b % MOD 
+        b = b*b % MOD
+        n //= 2
+    print(a)
+
+    return
+
+solve()
