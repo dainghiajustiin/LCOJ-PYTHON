@@ -1,0 +1,14 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    P, r, n, t = map(int, input().split())
+    A = P*((1 + (r/100)/n)**(n*t)) 
+    print(f"{A:.2f}")
+
+    return
+
+solve()
