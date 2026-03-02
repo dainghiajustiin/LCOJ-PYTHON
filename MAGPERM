@@ -1,0 +1,47 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, k = map(int, input().split())
+
+    if(k > n//2):
+        print(-1)
+        return 
+
+    arr = [0] * (n + 5)
+    ok = [False] * (n + 5)
+    isValid = True 
+
+    for i in range(1, k+1):
+        arr[i] = i + k 
+        ok[i + k] = True 
+    
+    for i in range(n, n - k, -1):
+        if(ok[i - k] == False):
+            arr[i] = i - k 
+            ok[i - k] = True 
+        else:
+            print(-1)
+            return 
+    
+    for i in range(k + 1, n - k + 1):
+        if(ok[i - k] == False):
+            arr[i] = i - k 
+            ok[i - k] = True 
+        else:
+            if(ok[i + k] == False):
+                arr[i] = i + k 
+                ok[i + k] = True 
+            else:
+                print(-1)
+                return
+            
+    for i in range(1, n+1):
+        print(arr[i], end=" ")
+
+    return
+
+solve()
