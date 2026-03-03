@@ -1,0 +1,25 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    s = input()
+    isValid = True 
+    cnt = 0 
+
+    for elm in s:
+        toInt = ord(elm)
+        if(toInt >= ord("A") and toInt <= ord("Z")):
+            if(isValid):
+                isValid = False 
+                cnt += 1
+        else:
+            isValid = True 
+
+    print(cnt) 
+    
+    return
+
+solve()
