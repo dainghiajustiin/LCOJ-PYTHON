@@ -1,0 +1,15 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+
+    for i in range(31):
+        print(f"{n} x {i} = {n*i}")
+
+    return
+
+solve()
