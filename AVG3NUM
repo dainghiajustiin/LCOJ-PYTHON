@@ -1,0 +1,14 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b, x = map(int, input().split())
+    c = 3*x - a - b 
+    print(c)
+
+    return
+
+solve()
