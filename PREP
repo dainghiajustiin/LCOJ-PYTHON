@@ -1,0 +1,14 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b, x, y = map(int, input().split())
+    ans = a*x + b*y 
+    print(ans)
+
+    return
+
+solve()
