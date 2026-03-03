@@ -1,0 +1,22 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    s = input()
+    cnt = [False] * 200
+    ans = ""
+
+    for elm in s:
+        toInt = ord(elm) - ord("A")
+        if(cnt[toInt] == False):
+            cnt[toInt] = True 
+            ans += elm
+    
+    print(ans)
+
+    return
+
+solve()
