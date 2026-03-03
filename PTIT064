@@ -1,0 +1,21 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    
+    for elm in a:
+        b.append(elm) 
+    b.sort()
+
+    for elm in b:
+        print(elm, end=" ")
+
+    return
+
+solve()
