@@ -1,0 +1,21 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, k = map(int, input().split())
+    lst = list(map(int, input().split()))
+    pre = [0] 
+
+    for elm in lst:
+        pre.append(pre[-1] + elm)
+
+    for _ in range(k):
+        l, r = map(int, input().split())
+        print(pre[r] - pre[l-1], end=" ")
+
+    return
+
+solve()
