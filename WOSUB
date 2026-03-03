@@ -1,0 +1,31 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    S = int(input())
+
+    pre = [0] 
+    for elm in lst:
+        pre.append(pre[-1] + elm)
+
+    ans = -1 
+    dct = {0 : 0}
+
+    for i in range(1, n+1):
+        value = pre[i] - S
+        if(value in dct):
+            ans = max(ans, i - dct[value])
+        
+        if(not pre[i] in dct):
+            dct.update({pre[i] : i})
+    
+    print(ans)
+
+    return
+
+solve()
