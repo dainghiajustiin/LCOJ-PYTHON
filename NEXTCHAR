@@ -1,0 +1,15 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    char = input()
+    toInt = ord(char) + 1
+    if(toInt > ord('z')): toInt -= 26
+    print(chr(toInt))
+
+    return
+
+solve()
