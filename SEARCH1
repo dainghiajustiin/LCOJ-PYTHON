@@ -1,0 +1,26 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    for i in  range(m):
+        l = 0
+        r = n - 1
+        ans = 0
+
+        while(l <= r):
+            mid = (l + r) >> 1
+            if(a[mid] >= b[i]):
+                if(a[mid] == b[i]): ans = 1
+                r = mid - 1 
+            else: l = mid + 1 
+        print(ans, end = "")
+    return
+
+solve()
