@@ -1,0 +1,22 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    lst.sort()
+
+    pos = n - n//2
+    ans = n//2 
+
+    for i in range(pos):
+        if(lst[i] == lst[pos]): ans += 1 
+    
+    print(ans)
+
+    return
+
+solve()
