@@ -1,0 +1,22 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+
+    while(n > 9):
+        faken = n 
+        sum = 0 
+        while(faken > 0):
+            sum += faken%10
+            faken //= 10
+        n = sum 
+    
+    print(n)
+
+    return
+
+solve()
