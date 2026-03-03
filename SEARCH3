@@ -1,0 +1,25 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dct = {}
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    
+    for i in range(n):
+        if(not a[i] in dct):
+            dct.update({a[i] : i+1})
+    
+    for i in range(m):
+        if(b[i] in dct):
+            print(dct[b[i]], end=" ")
+        else:
+            print(0, end=" ")
+
+    return
+
+solve()
