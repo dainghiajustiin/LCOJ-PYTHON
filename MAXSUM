@@ -1,0 +1,26 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = []
+    for i in range(n):
+        x = int(input())
+        lst.append(x)
+    
+    ans = lst[0]
+    S = 0
+
+    for i in range(n):
+        S += lst[i]
+        ans = max(ans, S)
+        if(S < 0): S = 0
+
+    print(ans) 
+
+    return
+
+solve()
