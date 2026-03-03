@@ -1,0 +1,23 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(str, input().split()))
+
+    for i in range(n):
+        for j in range(i+1, n):
+            if(lst[i] + lst[j] < lst[j] + lst[i]):
+                tmp = lst[i]
+                lst[i] = lst[j]
+                lst[j] = tmp 
+
+    for elm in lst:
+        print(elm, end="")
+
+    return
+
+solve()
