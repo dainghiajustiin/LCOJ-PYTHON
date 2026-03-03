@@ -1,0 +1,17 @@
+from math import sqrt
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    ans = (n*n) >> 1
+    if(n&1): print(str(ans) + ".5")
+    else: print(str(ans) + ".0")
+
+    return
+
+solve()
