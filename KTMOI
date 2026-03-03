@@ -1,0 +1,13 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    char = input()
+    print(char.lower())
+
+    return
+
+solve()
