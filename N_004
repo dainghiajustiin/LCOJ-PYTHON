@@ -1,0 +1,28 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, k = map(int, input().split())
+    lst = list(map(int, input().split()))
+    dct = {0 : 1}
+    ans = 0
+    s = 0
+    for elm in lst:
+        s += elm 
+        value = s - k
+        if(value in dct):
+            ans += dct[value]
+        
+        if(s in dct):
+            dct[s] += 1
+        else:
+            dct.update({s : 1})
+    
+    print(ans)
+
+    return
+
+solve()
