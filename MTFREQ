@@ -1,0 +1,26 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dct = {}
+    n = int(input())
+    lst = list(map(int, input().split()))
+    
+    for elm in lst:
+        if(not elm in dct):
+            dct.update({elm : 1})
+        else:
+            dct[elm] += 1
+
+    print(len(dct))
+    for elm in lst:
+        if(dct[elm] != 0):
+            print(elm, dct[elm])
+            dct[elm] = 0
+
+    return
+
+solve()
