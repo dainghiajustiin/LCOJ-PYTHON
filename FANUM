@@ -1,0 +1,26 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    MAXN = 10**6 + 2
+
+    cnt = [0] * MAXN 
+
+    ans = 0
+    n = int(input())
+    lst = list(map(int, input().split()))
+
+    for elm in lst:
+        cnt[elm] += 1 
+
+    for elm in lst:
+        if(cnt[elm] == 1): ans += 1 
+    
+    print(ans)
+
+    return
+
+solve()
