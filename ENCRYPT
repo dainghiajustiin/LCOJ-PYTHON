@@ -1,0 +1,19 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    s = input()
+    sum = 0
+    for elm in s:
+        if(elm >= '0' and elm <= '9'):
+            sum += int(elm)
+        else:
+            print(elm, end="")
+    print(sum)
+
+    return
+
+solve()
