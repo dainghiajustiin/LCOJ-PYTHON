@@ -1,0 +1,18 @@
+TASK = "tallest"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    nTest = int(fileIn.readline())
+
+    for _ in range(nTest):
+        n = int(fileIn.readline())
+        lst = list(map(int, fileIn.readline().split()))
+        ans = [-1]
+
+        for i in range(n-1, 0, -1):
+            ans.append(max(ans[-1], lst[i]))
+
+        for i in range(n-1, -1, -1):
+            fileOut.write(str(ans[i]) +  " ")
+        fileOut.write("\n")
