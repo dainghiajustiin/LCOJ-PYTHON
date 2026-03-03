@@ -1,0 +1,20 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b = map(int, input().split())
+    ans = 0
+
+    for i in range(1, int(a**0.5) + 1):
+        if(a % i == 0):
+            if(b % i != 0): ans += i
+            if(i*i != a and b % (a//i) != 0): ans += a//i
+    
+    print(ans)
+
+    return
+
+solve()
