@@ -1,0 +1,13 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b = map(int, input().split())
+    print(1 if a > b else 0)
+
+    return
+
+solve()
