@@ -1,0 +1,34 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+
+    for _ in range(nTest):
+        s = input()
+        cnt = 0
+        char = ""
+
+        for i in range(len(s)):
+            if(s[i] != char):
+                if(char != ""):
+                    print(char, end="")
+                    print(cnt, end="")
+
+                char = s[i]
+                cnt = 1
+            else:
+                char = s[i]
+                cnt += 1
+        if(cnt > 0):
+            print(char, end="")
+            print(cnt, end="")
+
+        print()
+        
+    return
+
+solve()
