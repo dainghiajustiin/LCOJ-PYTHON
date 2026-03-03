@@ -1,0 +1,19 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    ans = 0 
+
+    for i in range(1, n, 2):
+        ans += lst[i] 
+
+    print(ans)
+
+    return
+
+solve()
