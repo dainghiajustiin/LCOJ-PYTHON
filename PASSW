@@ -1,0 +1,32 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+
+    for _ in range(nTest):
+        s = input()
+        ok1 = 0
+        ok2 = 0
+        ok3 = 0
+
+        for elm in s:
+            toInt = ord(elm)
+
+            if(toInt >= ord('0') and toInt <= ord('9')): ok1 = 1
+            if(toInt >= ord('a') and toInt <= ord('z')): ok2 = 1
+            if(toInt >= ord('A') and toInt <= ord('Z')): ok3 = 1
+
+        ans = min(5, max(len(s)-5, 0))
+        if(ok1 + ok2 + ok3 == 1): ans += 1
+        if(ok1 + ok2 + ok3 == 2): ans += 2
+        if(ok1 + ok2 + ok3 == 3): ans += 5
+
+        print(ans, end=" ")
+
+    return
+
+solve()
