@@ -1,0 +1,17 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    s = input()
+    s = "000" + s 
+
+    print(s[-3], end="")
+    print(s[-2], end="")
+    print(s[-1], end="")
+
+    return
+
+solve()
