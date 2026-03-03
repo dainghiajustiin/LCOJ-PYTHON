@@ -1,0 +1,22 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    lst = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    n, y = map(int, input().split())
+
+    if(y % 400 == 0 or (y % 4 == 0 and y % 100 != 0)):
+        lst[2] += 1
+    
+    month = 1
+    while(lst[month] < n):
+        n -= lst[month]
+        month += 1
+    print(n, month)
+    
+    return
+
+solve()
