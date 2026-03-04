@@ -1,0 +1,16 @@
+def get(n: int) -> int:
+    return ((n+1)//2)**2
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    l, r = map(int, input().split())
+    print(get(r) - get(l-1))
+
+    return
+
+solve()
