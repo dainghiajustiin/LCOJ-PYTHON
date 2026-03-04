@@ -1,0 +1,33 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dct = {}
+    dct.update({"I" : 1})
+    dct.update({"V" : 5})
+    dct.update({"X" : 10})
+    dct.update({"L" : 50})
+    dct.update({"C" : 100})
+    dct.update({"D" : 500})
+    dct.update({"M" : 1000})
+
+    s = input()
+    ans = 0
+
+    i = 0
+    while(i < len(s)):
+        if(i + 1 < len(s) and dct[s[i]] < dct[s[i+1]]):
+            ans += abs(dct[s[i+1]] - dct[s[i]])
+            i += 2
+        else:
+            ans += dct[s[i]]
+            i += 1
+
+    print(ans) 
+
+    return
+
+solve()
