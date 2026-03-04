@@ -1,0 +1,16 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    s = input()
+
+    for elm in s:
+        if(elm == ','): print(" ", end="")
+        else: print(elm, end="")
+
+    return
+
+solve()
