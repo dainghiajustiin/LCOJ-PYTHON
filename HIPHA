@@ -1,0 +1,9 @@
+n = int(raw_input())
+lst = map(int, raw_input().split())
+
+ans = 0
+
+for elm in lst:
+    ans += (1 if elm == 1 else -1)
+
+print abs(ans)
