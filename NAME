@@ -1,0 +1,21 @@
+def toBest(S: str) -> str:
+    return S[0].upper() + S[1:]
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+    for _ in range(nTest):
+        s = input()
+        words = s.lower().split()
+        for elm in words:
+            print(toBest(elm), end=" ")
+        print()
+
+    return
+
+solve()
