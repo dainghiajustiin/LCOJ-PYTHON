@@ -1,0 +1,23 @@
+def gcd(a: int, b: int) -> int:
+    if(b == 0): return a
+    return gcd(b, a%b)
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    ans = 0
+
+    for i in range(n-1):
+        ans = max(ans, gcd(lst[i], lst[i+1]))
+    
+    print(ans)
+
+    return
+
+solve()
