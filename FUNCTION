@@ -1,0 +1,16 @@
+def Func(a: int, b: int, c: int, x: int) -> int:
+    return a*x*x + b*x + c
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b, c, x = map(int, input().split())
+    print(Func(a, b, c, x))
+
+    return
+
+solve()
