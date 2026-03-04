@@ -1,0 +1,35 @@
+def isp(n) -> bool:
+    if(n == 2 or n == 3): return True
+    if(n&1 == 0): return False
+    if(n%3 == 0): return False
+
+    for i in range(5, n, 6):
+        if(i*i > n): break
+        if(n % i == 0): return False 
+        if(n % (i + 2) == 0): return False 
+    return (n > 1)
+
+def sum(n: int) -> int:
+    res = 0
+    while(n > 0):
+        res += n%10 
+        n //= 10 
+    return res
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    l, r = map(int, input().split())
+    ans = 0
+
+    for i in range(l+1, r+1):
+        if(isp(sum(i)) == True): ans += 1 
+    print(ans)
+
+    return
+
+solve()
