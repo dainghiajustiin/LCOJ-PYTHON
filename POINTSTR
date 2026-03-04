@@ -1,0 +1,17 @@
+import re
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    txt = input()
+    matches = re.findall("luyencode", txt)
+    print(len(matches))
+
+    return
+
+solve()
