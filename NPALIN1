@@ -1,0 +1,19 @@
+import sys
+
+ans = [0] * 20
+
+def init():
+    for i in range(1, 16):
+        ans[i] = 9 * (10**((i - 1)//2))
+    return
+
+def solve():
+    init()
+
+    input_data = sys.stdin.read().split()
+    output = "\n".join(str(ans[int(n)]) for n in input_data)
+    print(output)
+
+    return
+
+solve()
