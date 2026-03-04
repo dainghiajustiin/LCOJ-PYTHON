@@ -1,0 +1,21 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    m, n = map(int, input().split())
+
+    for dogs in range(m+1):
+        if((n - 4*dogs) % 2 == 0):
+            chickens = (n - 4*dogs) >> 1 
+            if(chickens + dogs == m):
+                print(chickens, dogs)
+                return 
+            
+    print(-1)
+
+    return
+
+solve()
