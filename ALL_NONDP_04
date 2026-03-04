@@ -1,0 +1,23 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, L = map(int, input().split())
+    lst = list(map(int, input().split()))
+    pre = [0]
+    ans = -10**18
+
+    for elm in lst:
+        pre.append(pre[-1] + elm)
+
+    for i in range(L, n+1):
+        ans = max(ans, pre[i] - pre[i-L])
+    
+    print(ans)
+
+    return
+
+solve()
