@@ -1,0 +1,33 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    s = input()
+    n = len(s)
+
+    dp = bytearray((n+1)*(n+1))
+
+    for i in range(n):
+        dp[i*n + i] = 1
+    
+    for i in range(n-1):
+        if(s[i] == s[i+1]):
+            dp[i*n + (i+1)] = 1
+
+    for sz in range(3, n+1):
+        for i in range(n - sz + 1):
+            j = i + sz - 1
+            if(s[i] == s[j] and dp[(i+1)*n + (j-1)]):
+                dp[i*n + j] = 1
+
+    nQuery = int(input())
+    for _ in range(nQuery):
+        u, v = map(int, input().split())
+        print("YES" if dp[(u-1)*n + (v-1)] == 1 else "NO")
+
+    return
+
+solve()
