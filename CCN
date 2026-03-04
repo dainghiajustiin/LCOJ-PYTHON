@@ -1,0 +1,33 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    a, b = map(str, input().split())
+
+    a = a[::-1]
+    b = b[::-1]
+
+    cnt = 0
+    carry = 0
+    
+    while(len(a) < len(b)): a += "0"
+    while(len(a) > len(b)): b += "0"
+
+    n = len(a)
+
+    for i in range(n):
+        sum = int(ord(a[i]) - ord("0")) + int(ord(b[i]) - ord("0")) + carry 
+
+        if(sum >= 10): 
+            carry = 1
+            cnt += 1
+        else: carry = 0
+
+    print(cnt)
+
+    return
+
+solve()
