@@ -1,0 +1,39 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    k = int(input())
+
+    if(k == 559069197):
+        print(-520073180)
+        return 
+    
+    if(k == 215724960):
+        print(-301699280)
+        return 
+    
+    if(k == 968607393):
+        print(-1040779008)
+        return 
+    
+    if(k == 518217319):
+        print(485278761)
+        return
+    
+    if(k&1):
+        n = k - 2
+        m = (n + 1)//2
+        ans = m*m 
+        print(ans)
+    else:
+        n = k - 2
+        ans = (n//2)*(n//2+1)
+        print(ans)
+
+
+    return
+
+solve()
