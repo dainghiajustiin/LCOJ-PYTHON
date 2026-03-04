@@ -1,0 +1,23 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    sumOdd = 0
+    sumEven = 0
+
+    while(n > 0):
+        if((n%10) & 1): sumOdd += n%10
+        else: sumEven += n%10
+
+        n //= 10
+
+    print(sumEven)
+    print(sumOdd)
+
+    return
+
+solve()
