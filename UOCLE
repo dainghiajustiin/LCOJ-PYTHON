@@ -1,0 +1,39 @@
+MAXN = 10**6 + 4
+lp = [0] * MAXN
+pr = []
+
+def init():
+    lp[0] = lp[1] = 1
+    for i in range(2, MAXN):
+        if(lp[i] == 0):
+            lp[i] = i
+            pr.append(i)
+        
+        for j in range(len(pr)):
+            if(pr[j]*i >= MAXN): break 
+            lp[pr[j]*i] = pr[j]
+            if(pr[j] == lp[i]): break
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+
+    for _ in range(nTest):
+        n = int(input())
+        isValid = False
+
+        while(lp[n] == 2):
+            n //= 2
+            isValid = True 
+
+        if(isValid): print(n)
+        else:
+            if(lp[n] == n): print(1)
+            else: print(n // lp[n])
+
+    return
+
+solve()
