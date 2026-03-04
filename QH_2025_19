@@ -1,0 +1,29 @@
+import bisect
+
+TASK = "tree"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    n = int(fileIn.readline())
+    lst = list(map(int, fileIn.readline().split()))
+    vector = []
+    ans = n 
+
+    for i in range(n):
+        pos = bisect.bisect_left(vector, lst[i])
+        if(pos == len(vector)): vector.append(lst[i])
+        else: vector[pos] = min(vector[pos], lst[i])
+
+    ans = min(ans, n - len(vector))
+    vector.clear()
+
+    for i in range(n-1, -1, -1):
+        pos = bisect.bisect_left(vector, lst[i])
+        if(pos == len(vector)): vector.append(lst[i])
+        else: vector[pos] = min(vector[pos], lst[i])
+
+    ans = min(ans, n - len(vector))
+    vector.clear()
+
+    fileOut.write(str(ans))
