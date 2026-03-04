@@ -1,0 +1,42 @@
+def count(lst: list, x: int) -> int:
+    s = 0
+    l = 0
+    ans = 0
+    for r in range(len(lst)):
+        s += lst[r]
+        while(s > x):
+            s -= lst[l]
+            l += 1
+        ans += r - l + 1
+    return ans 
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, k = map(int, input().split())
+    lst = list(map(int, input().split()))
+
+    l = 0
+    r = 0
+    ans = 0
+
+    for elm in lst:
+        r += elm 
+        ans += elm 
+
+    while(l <= r):
+        mid = (l + r) >> 1
+        if(count(lst, mid) >= k):
+            ans = mid 
+            r = mid - 1
+        else:
+            l = mid + 1
+    
+    print(ans)
+    return
+
+solve()
