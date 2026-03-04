@@ -1,0 +1,21 @@
+TASK = "fac"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    fac = [1] 
+    for i in range(2, 21):
+        fac.append(fac[-1]*i)
+
+    dct = {}
+    for i in range(len(fac)):
+        for j in range(i+1, len(fac)):
+            for k in range(j+1, len(fac)):
+                value = fac[i] + fac[j] + fac[k]
+                if(not value in dct):
+                    dct.update({value : True})
+
+    nQuery = int(fileIn.readline())
+    for _ in range(nQuery):
+        n = int(fileIn.readline())
+        fileOut.write("1\n" if n in dct else "0\n")
