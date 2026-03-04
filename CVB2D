@@ -1,0 +1,19 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+    for _ in range(nTest):
+        sum = 0
+        s = input()
+        for i in range(len(s)):
+            if(s[i] == "1"):
+                sum += (1 << (len(s) - i - 1))
+        print(sum)
+
+    return
+
+solve()
