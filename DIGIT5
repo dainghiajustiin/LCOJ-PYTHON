@@ -1,0 +1,21 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    m, n = map(int, input().split())
+    ans = 0
+
+    for i in range(m, n+1):
+        fakei = i 
+        while(fakei > 0):
+            if(fakei % 10 == 5): ans += 1
+            fakei //= 10 
+    
+    print(ans)
+
+    return
+
+solve()
