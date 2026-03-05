@@ -1,0 +1,30 @@
+import sys 
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    input = sys.stdin.read().split()
+    n = int(input[0])
+    lst = [int(x) for x in input[1::]]
+
+    for i in range(n):
+        lst.append(lst[i])
+
+    pre = [0] 
+    for elm in lst:
+        pre.append(pre[-1] + elm)
+
+    ans = 10**18
+    for k in range(1, n+1):
+        for i in range(k, len(pre)):
+            ans = min(ans, pre[i] - pre[i-k])
+
+    print(ans)
+
+    return
+
+solve()
