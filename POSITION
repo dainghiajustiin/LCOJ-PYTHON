@@ -1,0 +1,18 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = [1]
+    for i in range(1, n+1):
+        if(i&1): lst.append(lst[-1] + i)
+        else: lst.append(lst[-1]*i)
+
+    print(lst[-1])
+
+    return
+
+solve()
