@@ -1,0 +1,26 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+
+    for a in range(1234):
+        b = n - 11*a
+        if(b < 0 or b % 111 != 0): continue
+        c = b // 111 
+        if(c >= 0):
+            print("YES")
+            return 
+        
+    a = n % 111
+    if(a % 11 != 0):
+        print("NO")
+    else:
+        print("YES")
+        
+    return
+
+solve()
