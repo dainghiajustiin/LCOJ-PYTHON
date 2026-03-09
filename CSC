@@ -1,0 +1,16 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    lst = list(map(int, input().split()))
+    lst.sort()
+
+    if(lst[1] - lst[0] == lst[2] - lst[1]): print(lst[2] + lst[2] - lst[1])
+    else: print(lst[0] + lst[2] - lst[1])
+
+    return
+
+solve()
