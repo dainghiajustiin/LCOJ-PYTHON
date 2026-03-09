@@ -1,0 +1,13 @@
+TASK = "ChanLe"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    n = int(fileIn.readline().strip())
+    lst = list(map(int, fileIn.readline().strip().split()))
+    ans = -1
+    for i in range(n-1):
+        if((lst[i]+lst[i+1]) % 2 == 1):
+            ans = max(ans, lst[i]+lst[i+1])
+    
+    fileOut.write(str(ans))
