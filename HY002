@@ -1,0 +1,24 @@
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    dct = {}
+
+    for elm in lst:
+        if(elm in dct): dct[elm] += 1
+        else: dct.update({elm : 1})
+    
+    dct = dict(sorted(dct.items()))
+
+    print(len(dct))
+    for elm in dct:
+        print(elm, dct[elm])
+
+    return
+
+solve()
