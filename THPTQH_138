@@ -1,0 +1,31 @@
+TASK = "SOHOC"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+import math 
+
+MAXN = 10**4 + 7
+lp = [0] * MAXN 
+pr = []
+
+def init():
+    lp[0] = lp[1] = 1
+    for i in range(2, MAXN):
+        if(lp[i] == 0):
+            lp[i] = i 
+            pr.append(i)
+        
+        for j in range(len(pr)):
+            if(pr[j]*i >= MAXN): break 
+            lp[pr[j]*i] = pr[j]
+            if(lp[i] == pr[j]): break
+
+    return
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    init()
+    n = int(fileIn.readline().strip())
+    a = int(math.sqrt(n))
+
+    if(a*a == n and lp[a] == a): fileOut.write("1")
+    else: fileOut.write("0")
