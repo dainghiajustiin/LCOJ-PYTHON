@@ -1,0 +1,44 @@
+TASK = "UocNT"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+MAXN = 10**6 + 7
+lp = [0] * MAXN
+pr = []
+
+def isp(n):
+    if(n == 2 or n == 3): return True
+    if(n&1 == 0): return False
+    if(n%3 == 0): return False
+
+    for i in range(5, n, 6):
+        if(i*i > n): break
+        if(n % i == 0): return False 
+        if(n % (i + 2) == 0): return False 
+    return (n > 1)
+
+def init():
+    lp[0] = lp[1] = 0
+    for i in range(2, MAXN):
+        if(lp[i] == 0):
+            lp[i] = i 
+            pr.append(i)
+        
+        for j in range(len(pr)):
+            if(i*pr[j] >= MAXN): break 
+            lp[pr[j]*i] = pr[j]
+            if(lp[i] == pr[j]): break
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    init()
+
+    n = int(fileIn.readline().strip())
+    ans = 0 
+    for i in range(1, int(n**0.5) + 1):
+        if(n % i == 0):
+            if(lp[i] == i): ans += 1
+            if(i*i != n):
+                if(n//i < MAXN and lp[n//i] == n//i): ans += 1
+                elif(isp(n//i)): ans += 1
+    
+    fileOut.write(str(ans))
