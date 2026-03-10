@@ -1,0 +1,43 @@
+MAXN = 10**6 + 7
+
+lp = [0] * MAXN 
+pr = []
+
+def init():
+    lp[0] = lp[1] = 1
+    for i in range(2, MAXN):
+        if(lp[i] == 0):
+            lp[i] = i 
+            pr.append(i)
+        
+        for j in range(len(pr)):
+            if(pr[j]*i >= MAXN): break 
+            lp[pr[j]*i] = pr[j]
+            if(lp[i] == pr[j]): break
+
+    return
+
+def solve():
+    init()
+
+    ans = []
+    n = int(input())
+
+    for elm in pr:
+        if(elm > n**0.5): break 
+        if(n % elm == 0):
+            ans.append([elm, 0])
+            while(n % elm == 0):
+                n //= elm 
+                ans[-1][-1] += 1
+    
+    if(n > 0):
+        ans.append([n, 1])
+    
+    print(len(ans))
+    for elm in ans:
+        print(elm[0], elm[1])
+        
+    return
+
+solve()
