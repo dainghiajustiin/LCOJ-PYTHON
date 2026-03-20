@@ -1,0 +1,15 @@
+TASK = "COUNT"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+def pw(exp: int, mod: int) -> int:
+    if(exp == 0): return 1
+    res = pw(exp >> 1, mod)
+    res = res * res % mod
+    if(exp & 1): res = res * 3 % mod
+    return res
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    n = int(fileIn.readline().strip())
+    ans = pw(n - 1, 10**9 + 7)
+    fileOut.write(str(ans))
