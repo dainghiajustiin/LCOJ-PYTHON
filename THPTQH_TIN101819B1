@@ -1,0 +1,19 @@
+TASK = "DUPSTR"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    S = fileIn.readline().strip()
+
+    if(len(S) % 2 != 0):
+        fileOut.write("No")
+    else:
+        n = len(S)//2
+        isValid = True
+        for i in range(n):
+            if(S[i] != S[i+n]):
+                isValid = False 
+                break 
+        
+        if(isValid): fileOut.write("Yes")
+        else: fileOut.write("No")
