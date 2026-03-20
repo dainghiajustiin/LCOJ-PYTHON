@@ -1,0 +1,54 @@
+TASK = "nto"
+FILE_INPUT = TASK + ".inp"
+FILE_OUTPUT = TASK + ".OUT"
+
+MAXN = 10**6 + 7
+lp = [0] * MAXN
+pr = []
+
+def init() -> None:
+    lp[0] = lp[1] = 1
+    for i in range(2, MAXN):
+        if(lp[i] == 0):
+            lp[i] = i
+            pr.append(i)
+        
+        for j in range(len(pr)):
+            if(pr[j]*i >= MAXN): break 
+            lp[pr[j]*i] = pr[j]
+            if(lp[i] == pr[j]): break
+
+with open(FILE_INPUT, 'r') as fileIn, open(FILE_OUTPUT, 'w') as fileOut:
+    init()
+
+    nTest = int(fileIn.readline().strip())
+
+    for _ in range(nTest):
+        n = int(fileIn.readline().strip())
+        faken = n
+
+        cnt = 1
+        cur = 0
+        lastPrime = -1
+        while(lp[n] > 1):
+            if(lastPrime != lp[n]):
+                cnt *= (cur + 1)
+                cur = 1
+                lastPrime = lp[n]
+            else:
+                cur += 1
+            n //= lp[n]
+        cnt *= (cur + 1)
+
+        ans = ""
+        isValid = True
+        lastPrime = -1
+        n = faken
+        while(lp[n] > 1):
+            if(isValid == False): ans += "*" + str(lp[n])
+            else: 
+                ans += str(lp[n])
+                isValid = False
+            n //= lp[n]
+
+        fileOut.write(str(cnt) + " " + ans + "\n")
