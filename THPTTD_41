@@ -1,0 +1,30 @@
+import sys
+
+TASK = "sf"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return 
+
+def solve():
+    init()
+
+    input = sys.stdin.read().split()
+
+    n = int(input[0])
+    char1 = input[1]
+    m = int(input[2])
+    char2 = input[3]
+    k = int(input[4])
+    ans = ""
+
+    if(char1 == "H"): ans = str(min(n, k))
+    else: ans = str(max(0, k - n))
+    
+    sys.stdout.write(ans)
+
+    return 
+
+solve()
