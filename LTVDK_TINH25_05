@@ -1,0 +1,46 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    input = sys.stdin.read().split()
+
+    k = int(input[0])
+    S = input[1]
+    n = len(S)
+
+    def count(x: int) -> int:
+        if(x == 0): return 0
+        freq = [0] * 128
+        diff = 0
+        j = 0
+        ans = 0
+        ordS = [ord(c) for c in S]
+
+        for i in range(n):
+            charCode = ordS[i]
+            if(freq[charCode] == 0):
+                diff += 1 
+            freq[charCode] += 1
+
+            while(diff > x):
+                preChar = ordS[j]
+                freq[preChar] -= 1
+                if(freq[preChar] == 0):
+                    diff -= 1
+                j += 1
+            
+            ans += (i - j + 1)
+        
+        return ans
+        
+    result = count(k) - count(k - 1)
+    sys.stdout.write(str(result))
+
+    return
+
+solve()
