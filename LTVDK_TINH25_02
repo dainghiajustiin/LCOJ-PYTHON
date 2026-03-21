@@ -1,0 +1,17 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    input_data = map(int, sys.stdin.read().split())
+    nTest = next(input_data)
+    result = [str(3*n*(n+1)//2 - n) for n in input_data]
+    sys.stdout.write("\n".join(result) + "\n")
+
+    return
+
+solve()
