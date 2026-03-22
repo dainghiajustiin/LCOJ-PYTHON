@@ -1,0 +1,29 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+
+    input = map(int, sys.stdin.read().split())
+
+    n, target = next(input), next(input)
+    nums = list(input) 
+    dct = {}
+
+    for i in range(n):
+        value = target - nums[i]
+        if(value in dct):
+            ans = str(dct[value]) + " " + str(i)
+            sys.stdout.write(ans)
+            return 
+        
+        if(not nums[i] in dct):
+            dct.update({nums[i] : i})
+
+    return
+
+solve()
