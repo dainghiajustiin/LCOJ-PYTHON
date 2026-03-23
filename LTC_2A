@@ -1,0 +1,25 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    m = int(input())
+
+    if(m//3600 < 10): print("0%d:" %(m//3600), end = "")
+    else: print("%d:" %(m/3600), end = "")
+    m = m - m//3600*3600
+
+    if(m//60 < 10): print("0%d:" %(m//60), end = "")
+    else: print("%d:" %(m//60), end = "")
+    m = m - m//60*60
+
+    if(m < 10): print("0%d" %(m), end = "")
+    else: print("%d" %(m), end = "")
+
+    return
+
+solve()
