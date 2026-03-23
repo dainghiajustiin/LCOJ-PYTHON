@@ -1,0 +1,36 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+
+    T = int(dataInput[0])
+    curQuery = 1
+    stack = []
+    ans = []
+
+    for i in range(T):
+        typeQuery = int(dataInput[curQuery])
+        
+        if(typeQuery == 1):
+            curQuery += 1
+            num = int(dataInput[curQuery])
+            stack.append(num)
+        elif(typeQuery == 2):
+            if(len(stack) > 0): stack.pop()
+        else:
+            if(len(stack) > 0): ans.append(str(stack[-1]))
+            else: ans.append("Empty!")
+
+        curQuery += 1
+
+    sys.stdout.write("\n".join(ans) + "\n")
+
+    return
+
+solve()
