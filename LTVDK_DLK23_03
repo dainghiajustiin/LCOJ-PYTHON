@@ -1,0 +1,30 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, Q = map(int, input().split())
+    lst = list(map(int, input().split()))
+
+    for _ in range(Q):
+        l, r, S = map(int, input().split())
+
+        if(lst[r-1] < S): print(-1)
+        else:
+            ans = lst[r-1]
+            while(l <= r):
+                m = (l + r) >> 1
+                if(lst[m-1] >= S):
+                    ans = lst[m-1]
+                    r = m - 1
+                else: l = m + 1
+            print(ans)
+                
+
+    return
+
+solve()
