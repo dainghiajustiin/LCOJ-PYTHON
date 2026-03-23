@@ -1,0 +1,22 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+    
+    nSize = int(dataInput[0])
+    lst = [int(dataInput[i]) for i in range(1, nSize + 1)]
+    lst.sort()
+
+    print(lst[-1])
+    print(lst[-2])
+    print(lst[-3])
+
+    return
+
+solve()
