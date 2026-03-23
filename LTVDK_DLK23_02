@@ -1,0 +1,40 @@
+import sys
+
+def check(num: int) -> bool:
+    while(num > 0):
+        if(num % 10 == 3): return False  
+        if(num % 10 == 5): return False  
+        if(num % 10 == 7): return False
+        num //= 10 
+    return True  
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = [True] * (n + 3)
+
+    for i in range(5, int(n**0.5) + 1, 6):
+        if(lst[i] == True):
+            for j in range(i**2, n + 1, i):
+                lst[j] = False 
+        if(lst[i + 2] == True):
+            for j in range((i+2)**2, n + 1, i + 2):
+                lst[j] = False
+
+    ans = 0
+    if(n >= 2): ans += 1
+
+    for i in range(5, n + 1, 6):
+        if(lst[i] == True and check(i)): ans += 1
+        if(i + 2 <= n and lst[i + 2] == True and check(i + 2)): ans += 1
+
+    print(ans)
+
+    return
+
+solve()
