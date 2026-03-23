@@ -1,0 +1,23 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+
+    T = int(dataInput[0])
+    result = []
+
+    for i in range(1, T + 1):
+        N = int(dataInput[i])
+        result.append(str(N*(N + 1)//2))
+
+    sys.stdout.write("\n".join(result) + "\n")
+
+    return
+
+solve()
