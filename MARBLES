@@ -1,0 +1,22 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    isValid = False 
+    n = int(input())
+
+    i = 0
+    while(i*(i+1) <= 2*n):
+        if(i*(i+1) == 2*n): isValid = True 
+        i += 1
+    
+    print("Yes." if isValid else "No.")
+
+    return
+
+solve()
