@@ -1,0 +1,25 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    ans = ""
+
+    while(n > 0):
+        if(n % 2 == 1):
+            ans = "6" + ans
+            n = (n - 1)//2 
+        else:
+            ans = "8" + ans
+            n = (n - 2)//2
+    
+    print(ans)
+
+    return
+
+solve()
