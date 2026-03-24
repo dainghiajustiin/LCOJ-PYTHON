@@ -1,0 +1,47 @@
+import sys
+from array import array 
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    def getInput():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word 
+
+    dataInput = getInput()
+
+    N = int(next(dataInput))
+    K = int(next(dataInput))
+    lst = array('l', [0] * (N + 3))
+    pre = array('l', [0] * (N + 3))
+    suf = array('l', [0] * (N + 3))
+
+    for i in range(1, N + 1):
+        lst[i] = int(next(dataInput))
+        lst[i] += lst[i-1]
+
+    for i in range(1, N + 1):
+        if(i >= K): pre[i] = max(pre[i-1], lst[i] - lst[i-K])
+        else: pre[i] = -1
+    
+    for i in range(N, 0, -1):
+        if(i + K - 1 <= N): suf[i] = max(suf[i+1], lst[i+K-1] - lst[i-1])
+        else: suf[i] = -1
+
+    ans = 10**18
+    for i in range(1, N + 1):
+        # chon tu i -> i + k - 1
+        if(i + K - 1 > N): break
+        if(ans > max(pre[i-1], suf[i+K])):
+            ans = max(pre[i-1], suf[i+K])
+
+    print(ans)
+
+    return
+
+solve()
