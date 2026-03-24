@@ -1,0 +1,29 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+
+    left = 0
+    right = n - 1
+    ans = 0
+
+    while(left <= right):
+        a = min(lst[left], lst[right])
+        b = right - left 
+        ans = max(ans, a * b)
+
+        if(lst[left] < lst[right]): left += 1
+        else: right -= 1
+    
+    print(ans)
+
+    return
+
+solve()
