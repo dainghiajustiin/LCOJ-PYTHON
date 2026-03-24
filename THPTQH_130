@@ -1,0 +1,48 @@
+import sys
+
+TASK = "bfs"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+
+    N = int(dataInput[0])
+    M = int(dataInput[1])
+    S = int(dataInput[2])
+    T = int(dataInput[3])
+
+    adj = [[] for i in range(N + 1)]
+
+    curIdx = 4
+    for i in range(M):
+        u, v = int(dataInput[curIdx]), int(dataInput[curIdx + 1])
+        curIdx += 2
+        adj[u].append(v)
+        adj[v].append(u)
+
+    cnt = [-1] * (N + 1)
+    cnt[S] = 0
+    queue = []
+    curPos = 0
+    queue.append(S)
+    while(curPos < len(queue)):
+        u = queue[curPos]
+        curPos += 1
+
+        for v in adj[u]:
+            if(cnt[v] == -1):
+                queue.append(v)
+                cnt[v] = cnt[u] + 1
+    
+    sys.stdout.write("-1" if cnt[T] == -1 else str(cnt[T]))
+
+    return
+
+solve()
