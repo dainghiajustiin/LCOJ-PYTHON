@@ -1,0 +1,17 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    cv, a = map(int, input().split())
+    b = cv/2 - a
+    dt = int(a*b)
+    print(dt)
+
+    return
+
+solve()
