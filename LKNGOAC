@@ -1,0 +1,24 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    S = sys.stdin.read()
+    stack = [] 
+    result = []
+
+    for i in range(len(S)):
+        if(S[i] == "("):
+            stack.append(i + 1)
+        elif(S[i] == ")"):
+            result.append(str(stack.pop()) + " " + str(i + 1))
+            
+    sys.stdout.write("\n".join(result) + "\n")
+
+    return
+
+solve()
