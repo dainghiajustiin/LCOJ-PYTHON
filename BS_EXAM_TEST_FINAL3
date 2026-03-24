@@ -1,0 +1,55 @@
+import sys
+
+MAXN = 10**5 + 7
+ok = [True] * MAXN 
+pr = []
+
+def init() -> None:
+    ok[0] = ok[1] = False
+    for i in range(2, int(MAXN**0.5) + 1):
+        if(ok[i] == True):
+            for j in range(i**2, MAXN, i):
+                ok[j] = False 
+
+    for i in range(2, MAXN):
+        if(ok[i] == True): pr.append(i)
+
+    return
+
+def solve():
+    init()
+
+    k = int(input())
+    ans = 0
+
+    if(k % 2 == 0):
+        x = 2
+        point = 0
+
+        while(True):
+            y = pr[point]
+            z = k - y - x
+            if(x <= y and y <= z):
+                if(ok[z] == True): ans += 1
+            else: break
+            point += 1
+    else:
+        point1 = 0
+        while(True):
+            x = pr[point1]
+            if(3*x > k): break
+            point2 = point1
+            while(True):
+                y = pr[point2]
+                z = k - y - x 
+                if(x <= y and y <= z):
+                    if(ok[z] == True): ans += 1
+                else: break 
+                point2 += 1
+            point1 += 1
+
+    print(ans)
+
+    return
+
+solve()
