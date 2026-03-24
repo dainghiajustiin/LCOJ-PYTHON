@@ -1,0 +1,55 @@
+import sys
+from array import array
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    def getInput():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+
+    dataInput = getInput()
+
+    S = next(dataInput)
+    nQuery = int(next(dataInput))
+    
+    nSize = len(S)
+    pw = array('L', [0] * (nSize + 3))
+    hashLeft = array('L', [0] * (nSize + 3))
+    hashRight = array('L', [0] * (nSize + 3))
+    base = 4567
+    MOD = 10**9 + 9
+
+    # build Hashing
+    pw[0] = 1
+    hashLeft[0] = 0
+    for i in range(1, nSize + 1):
+        pw[i] = pw[i-1]*base % MOD
+        hashLeft[i] = (hashLeft[i-1]*base + ord(S[i-1])) % MOD 
+    
+    hashRight[nSize + 1] = 0
+    for i in range(nSize, 0, -1):
+        hashRight[i] = (hashRight[i+1]*base + ord(S[i-1])) % MOD
+
+    # process Query
+    def getAns():
+        for _ in range(nQuery):
+            L, R = int(next(dataInput)), int(next(dataInput))
+
+            leftValue = (hashLeft[R] - hashLeft[L-1]*pw[R-L+1]) % MOD
+            if(leftValue < 0): leftValue += MOD
+            rightValue = (hashRight[L] - hashRight[R+1]*pw[R-L+1]) % MOD 
+            if(rightValue < 0): rightValue += MOD
+
+            yield "YES" if (leftValue == rightValue) else "NO"
+
+    sys.stdout.write("\n".join(getAns()) + "\n")
+
+    return
+
+solve()
