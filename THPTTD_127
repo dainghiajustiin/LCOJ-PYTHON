@@ -1,0 +1,46 @@
+import sys
+
+TASK = "SumOfPrimes"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+MAXN = 10**5 + 7
+
+ok = [True]* MAXN 
+pre = [0] * MAXN
+
+def checkPalin(N: str) -> bool:
+    invN = "".join(reversed(N))
+    return (invN == N)
+
+def init():
+    ok[0] = ok[1] = False
+    for i in range(2, int(MAXN**0.5) + 1):
+        if(ok[i] == True):
+            for j in range(i**2, MAXN, i): ok[j] = False
+
+    for i in range(2, MAXN):
+        if(ok[i] == True and checkPalin(str(i))): pre[i] = pre[i-1] + i
+        else: pre[i] = pre[i-1]
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+
+    nQuery = int(dataInput[0])
+    curPos = 1
+    result = []
+
+    for i in range(nQuery):
+        L, R = int(dataInput[curPos]), int(dataInput[curPos + 1])
+        curPos += 2
+        result.append(str(pre[R] - pre[L - 1]))
+
+    sys.stdout.write("\n".join(result))
+
+    return
+
+solve()
