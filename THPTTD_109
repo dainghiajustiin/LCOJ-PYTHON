@@ -1,0 +1,34 @@
+import sys
+
+TASK = "FindN"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+    T = int(dataInput[0])
+    result = []
+
+    for _ in range(T):
+        n = int(dataInput[_ + 1])
+        ans = ""
+        while(n > 0):
+            if(n & 1):
+                ans = "4" + ans 
+                n = (n - 1)//2
+            else:
+                ans = "7" + ans 
+                n = (n - 2)//2
+        result.append(ans)
+
+    sys.stdout.write("\n".join(result) + "\n")
+
+    return
+
+solve()
