@@ -1,0 +1,43 @@
+import sys
+from array import array
+
+TASK = "COPRIME"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def gcd(a: int, b: int) -> int:
+    while(b != 0):
+        a, b = b, a%b 
+    return a
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    def getInput():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word 
+
+    dataInput = getInput()
+    N = int(next(dataInput))
+    lst = array('i', [0] * (N + 3))
+    ans = 1
+    curLen = 1
+
+    for i in range(1, N + 1):
+        lst[i] = int(next(dataInput))
+
+    for i in range(2, N + 1):
+        if(gcd(lst[i], lst[i-1]) == 1): curLen += 1
+        else: curLen = 1
+        ans = max(ans, curLen)
+
+    sys.stdout.write("0" if ans == 1 else str(ans))
+
+    return
+
+solve()
