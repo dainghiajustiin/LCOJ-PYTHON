@@ -1,0 +1,36 @@
+import sys
+
+TASK = "danbo"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+    N, K = int(dataInput[0]), int(dataInput[1])
+    queue = [N]
+    curPos = 0
+    ans = 0
+
+    while(curPos < len(queue)):
+        nums = queue[curPos]
+        curPos += 1
+
+        if(nums - K <= 0 or (nums - K) % 2 != 0):
+            ans += 1
+        else:
+            u = (nums - K)//2
+            v = nums - u 
+            queue.append(u)
+            queue.append(v)
+
+    sys.stdout.write(str(ans))
+
+    return
+
+solve()
