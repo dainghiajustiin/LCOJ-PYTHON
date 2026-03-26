@@ -1,0 +1,30 @@
+import sys
+
+TASK = "BAI1"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+
+    person1 = ["Joffrey", int(dataInput[0]), int(dataInput[3])]
+    person2 = ["Robb", int(dataInput[1]), int(dataInput[4])]
+    person3 = ["Stannis", int(dataInput[2]), int(dataInput[5])]
+
+    maxVal = 0
+    maxVal = max(maxVal, person1[1]*person1[2])
+    maxVal = max(maxVal, person2[1]*person2[2])
+    maxVal = max(maxVal, person3[1]*person3[2])
+    if(person1[1]*person1[2] == maxVal): print(person1[0], end = " ")
+    if(person2[1]*person2[2] == maxVal): print(person2[0], end = " ")
+    if(person3[1]*person3[2] == maxVal): print(person3[0], end = " ")
+
+    return
+
+solve()
