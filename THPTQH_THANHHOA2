@@ -1,0 +1,33 @@
+import sys
+from array import array 
+
+TASK = "BAI2"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+
+    N = int(dataInput[0])
+    cnt = array("i", [0] * (10**6 + 1))
+    maxCnt = 0
+
+    for i in range(1, N + 1):
+        nums = int(dataInput[i])
+        cnt[nums] += 1
+        maxCnt = max(maxCnt, cnt[nums])
+    
+    for i in range(1, 10**6):
+        if(cnt[i] == maxCnt):
+            print(i, cnt[i])
+            return
+
+    return
+
+solve()
