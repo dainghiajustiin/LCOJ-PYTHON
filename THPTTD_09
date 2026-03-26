@@ -1,0 +1,31 @@
+import sys
+
+TASK = "SUMX"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+    N, K = int(dataInput[0]), int(dataInput[1])
+    curID = 2
+    cnt = [0] * (K + 1)
+    ans = 0
+
+    for i in range(N):
+        nums = int(dataInput[curID])
+        curID += 1
+        if(K >= nums):
+            ans += cnt[K - nums]
+            cnt[nums] += 1
+
+    print(ans)
+
+    return
+
+solve()
