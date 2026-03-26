@@ -1,0 +1,53 @@
+import sys
+
+TASK = "BRCROSS"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = map(int, sys.stdin.read().split())
+    N, K = next(dataInput), next(dataInput)
+    INF = 10**18
+
+    dp = [INF] * (N + 3)
+    dp[N] = 0
+
+    ok = [False] * (N + 3)
+    ok[0] = ok[N] = True
+
+    lst = [0]
+    for _ in range(K):
+        lst.append(next(dataInput))
+        ok[lst[-1]] = True
+
+    for i in range(N - 1, -1, -1):
+        if(ok[i] != True): continue
+        minVal = INF
+        if(i + 1 <= N and ok[i + 1] == True): minVal = min(minVal, dp[i + 1])
+        if(i + 2 <= N and ok[i + 2] == True): minVal = min(minVal, dp[i + 2])
+        if(minVal != INF): dp[i] = minVal + 1
+
+    if(dp[0] == INF):
+        sys.stdout.write("-1")
+    else:
+        sys.stdout.write(str(dp[0]) + "\n")
+        result = []
+        curPos = 0
+        while(curPos < N):
+            if(curPos + 1 <= N and ok[curPos + 1] and dp[curPos] == dp[curPos + 1] + 1):
+                result.append("1")
+                curPos += 1
+            else:
+                result.append("2")
+                curPos += 2
+        sys.stdout.write("".join(result))
+
+    return
+
+solve()
