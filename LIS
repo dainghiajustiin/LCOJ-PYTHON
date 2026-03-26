@@ -1,0 +1,49 @@
+import sys
+from array import array
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+
+    N = int(dataInput[0])    
+    MAXN = 10**5
+    IT = array("i", [0] * (2*MAXN))
+    
+    def get(l: int, r:int) -> int:
+        res = 0
+        l += MAXN - 1
+        r += MAXN
+        while(l < r):
+            if(l & 1):
+                res = max(res, IT[l])
+                l += 1
+            if(r & 1):
+                r -= 1
+                res = max(res, IT[r])
+            l >>= 1
+            r >>= 1
+        return res 
+    
+    def upd(pos: int, val: int) -> None:
+        pos += MAXN - 1
+        IT[pos] = max(IT[pos], val)
+        while(pos > 1):
+            IT[pos >> 1] = max(IT[pos], IT[pos ^ 1])
+            pos >>= 1
+    
+    result = []
+    for i in range(1, N + 1):
+        nums = int(dataInput[i])
+        val = get(1, nums - 1) + 1
+        upd(nums, val)
+    
+    print(get(1, MAXN))
+
+    return
+
+solve()
