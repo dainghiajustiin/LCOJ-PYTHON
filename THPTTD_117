@@ -1,0 +1,27 @@
+import sys
+
+TASK = "mtable"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n, x = map(int, input().split())
+    ans = 0
+    for i in range(1, int(x**0.5) + 1):
+        if(x % i == 0):
+            a = i 
+            b = x//i
+            if(a <= n and b <= n):
+                if(a != b): ans += 2
+                else: ans += 1
+    print(ans)
+
+    return
+
+solve()
