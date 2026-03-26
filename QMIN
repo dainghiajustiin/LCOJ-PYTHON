@@ -1,0 +1,51 @@
+import sys
+from array import array
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+    
+    N, Q = int(dataInput[0]), int(dataInput[1])
+    INF = 10**9
+    IT = array("i", [INF] * (2*N))
+    
+    curPos = 2
+    for i in range(N):
+        IT[i + N] = int(dataInput[curPos])
+        curPos += 1
+
+    for i in range(N - 1, 0, -1):
+        IT[i] = min(IT[i << 1], IT[i << 1 | 1])
+
+    def get(l:int, r:int) -> int:
+        res = INF 
+        l += N - 1
+        r += N
+        while(l < r):
+            if(l & 1):
+                res = min(res, IT[l])
+                l += 1
+            if(r & 1):
+                r -= 1
+                res = min(res, IT[r])
+            l >>= 1
+            r >>= 1
+        return res
+
+    result = []
+    while(Q > 0):
+        Q -= 1
+        l, r = int(dataInput[curPos]), int(dataInput[curPos + 1])
+        curPos += 2
+        result.append(str(get(l, r)))
+
+    print(" ".join(result))
+
+    return
+
+solve()
