@@ -1,0 +1,43 @@
+import sys
+
+TASK = "DIVSEQ"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+    nTest = int(dataInput[0])
+    curID = 1
+    result = []
+
+    for _ in range(nTest):
+        D, N = int(dataInput[curID]), int(dataInput[curID + 1])
+        curID += 2
+        S = 0
+        dct = {}
+        ans = 0
+
+        for i in range(N):
+            S += int(dataInput[curID])
+            curID += 1
+            S %= D
+            if(S < 0): S += D
+
+            if(S in dct):
+                ans += dct[S]
+
+            if(S in dct): dct[S] += 1
+            else: dct.update({S : 1})
+        result.append(str(ans))
+    
+    sys.stdout.write("\n".join(result))
+
+    return
+
+solve()
