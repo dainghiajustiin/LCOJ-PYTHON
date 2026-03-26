@@ -1,0 +1,32 @@
+import sys
+from bisect import bisect_left
+
+TASK = "cfile"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = map(int, sys.stdin.read().split())
+    N = next(dataInput)
+    lst = []
+    for i in range(N):
+        lst.append(next(dataInput))
+    lst.sort()
+    ans = 0
+    left = 0
+
+    for right in range(N):
+        while(lst[left] < lst[right]*0.9): left += 1
+        ans += right - left 
+    
+    print(ans)
+
+    return
+
+solve()
