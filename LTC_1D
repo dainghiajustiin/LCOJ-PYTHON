@@ -1,0 +1,38 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+    N = int(dataInput[0])
+    ans = 0
+    curID = 1
+    adj = [[] for i in range(N + 1)]
+    dp = [[0, 0] for i in range(N + 1)]
+
+    for i in range(N - 1):
+        u, v = int(dataInput[curID]), int(dataInput[curID + 1])
+        curID += 2
+        adj[u].append(v)
+        adj[v].append(u)
+
+    def DFS(u: int, pre: int) -> None:
+        nonlocal ans
+        for v in adj[u]:
+            if(v == pre): continue
+            DFS(v, u)
+            dp[u].append(dp[v][-1] + 1)
+        dp[u].sort()
+        ans = max(ans, dp[u][-1] + dp[u][-2])
+    
+    DFS(1, 0)
+    ans = max(ans, dp[1][-1] + dp[1][-2])
+    print(ans)
+    
+    return
+
+solve()
