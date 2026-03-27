@@ -1,0 +1,17 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    L = int(input())
+    n = L//2//2
+    ans = n*(L//2 - n)
+    print(ans)
+
+    return
+
+solve()
