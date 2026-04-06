@@ -1,0 +1,30 @@
+import sys
+
+TASK = "bai1"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+dataInput = sys.stdin.read().split()
+
+M, N = int(dataInput[0]), int(dataInput[1])
+curID = 2
+a = [[0] * N for i in range(M)]
+rowMin = [10**18] * M
+rowMax = [-10**18] * M
+colMin = [10**18] * N
+colMax = [-10**18] * N
+
+for i in range(M):
+    for j in range(N):
+        a[i][j] = int(dataInput[curID])
+        curID += 1
+
+        rowMin[i], rowMax[i] = min(rowMin[i], a[i][j]), max(rowMax[i], a[i][j])
+        colMin[j], colMax[j] = min(colMin[j], a[i][j]), max(colMax[j], a[i][j])
+
+ans = 0
+for i in range(M):
+    for j in range(N):
+        if((a[i][j] == colMax[j] and a[i][j] == rowMin[i]) or (a[i][j] == colMin[j] and a[i][j] == rowMax[i])): ans += 1
+
+sys.stdout.write(str(ans))
