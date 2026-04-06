@@ -1,0 +1,32 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+
+    for _ in range(nTest):
+        E, k, S, C = map(int, input().split())
+        ans = 5*10**13
+        L , R = 0, 5*10*13
+
+        while(L <= R):
+            M = (L + R) >> 1
+            money = S + M*C
+            if(money >= E*k):
+                ans = M
+                R = M - 1 
+            else: L = M + 1
+        
+        if(ans == 5*10**13):
+            print(-1)
+        else:
+            print(ans)
+
+    return
+
+solve()
