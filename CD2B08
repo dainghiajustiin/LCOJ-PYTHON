@@ -1,0 +1,16 @@
+import sys
+
+K, M, N = map(int, input().split())
+mod = 10**K 
+M %= mod 
+ans = 1
+
+while(N > 0):
+    if(N & 1):
+        ans = ans * M  % mod 
+    M = M * M % mod 
+    N >>= 1
+
+out = str(ans)
+while(len(out) < K): out = '0' + out 
+print(out)
