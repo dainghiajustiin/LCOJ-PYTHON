@@ -1,0 +1,21 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+
+    for _ in range(nTest):
+        P, C, r, n = map(int, input().split())
+        A = P 
+        for i in range(n):
+            A = A*(10000 + r)//10000 + C
+        print(A)
+
+    return
+
+solve()
