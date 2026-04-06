@@ -1,0 +1,21 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    n = int(input())
+    lst = list(map(int, input().split()))
+    minV = 10**18
+    ans = 0
+    for elm in lst:
+        minV = min(minV, elm)
+        ans = max(ans, elm - minV)
+    print(ans)
+
+    return
+
+solve()
