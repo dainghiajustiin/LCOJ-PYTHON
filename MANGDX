@@ -1,0 +1,42 @@
+import sys
+
+n = int(input())
+lst = list(map(int, input().split()))
+
+cntOdd = 1
+low, high = 1, (n - 1) >> 1
+
+def check(len: int, lst: list, L: int) -> bool:
+    R = L + len - 1
+    while(L < R):
+        if(lst[L] != lst[R]): return False
+        L += 1
+        R -= 1
+    return True
+
+while(low <= high):
+    mid = (low + high) >> 1
+    isValid = False
+    for i in range(n - (2*mid + 1) + 1):
+        if(check(2*mid + 1, lst, i)):
+            isValid = True 
+            break 
+
+    if(isValid): cntOdd, low = 2*mid + 1, mid + 1
+    else: high = mid - 1
+
+cntEven = 0
+low, high = 1, n >> 1
+
+while(low <= high):
+    mid = (low + high) >> 1
+    isValid = False
+    for i in range(n - (2*mid) + 1):
+        if(check(2*mid, lst, i)):
+            isValid = True 
+            break 
+
+    if(isValid): cntEven, low = 2*mid, mid + 1
+    else: high = mid - 1
+
+print(max(cntOdd, cntEven))
