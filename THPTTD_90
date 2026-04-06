@@ -1,0 +1,47 @@
+import sys
+
+TASK = "test"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    dataInput = sys.stdin.read().split()
+    M, N = int(dataInput[0]), int(dataInput[1])
+    f = [[0] * N for i in range(M)]
+    isValid = [[True] * N for i in range(M)]
+    curID = 2
+
+    dx = [0, -1, 1, 0]
+    dy = [-1, 0, 0, 1]
+
+    def DFS(M: int, N: int, x: int, y: int) -> int:
+        res = 1
+        isValid[x][y] = False
+        for i in range(4):
+            nxtx = x + dx[i]
+            nxty = y + dy[i]
+            if(nxtx < 0 or nxty < 0 or nxtx >= M or nxty >= N): continue
+            if(f[nxtx][nxty] == 0 and isValid[nxtx][nxty] == True): res += DFS(M, N, nxtx, nxty)
+        return res
+
+    for i in range(M):
+        for j in range(N):
+            f[i][j] = int(dataInput[curID])
+            curID += 1
+
+    ans = 0
+    for i in range(M):
+        for j in range(N):
+            if(f[i][j] == 0 and isValid[i][j] == True): ans = max(ans, DFS(M, N, i, j))
+    
+    sys.stdout.write(str(ans))
+
+    return
+
+solve()
