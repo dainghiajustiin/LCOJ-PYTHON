@@ -1,0 +1,35 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+
+    for _ in range(nTest):
+        P, X, r, n = map(int, input().split())
+
+        if(n == 0 and P < X):
+            print(-1)
+            continue
+    
+        low, high = 0, X
+        ans = -1
+
+        while(low <= high):
+            mid = (low + high) >> 1
+            res = P 
+            for i in range(n):
+                res = res*(10000 + r)//10000 + mid 
+                if(res >= X): break 
+            if(res >= X): ans, high = mid, mid - 1
+            else: low = mid + 1
+        
+        print(ans)
+
+    return
+
+solve()
