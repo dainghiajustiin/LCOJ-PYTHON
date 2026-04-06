@@ -1,0 +1,40 @@
+import sys
+
+def init():
+
+    return
+
+def solve():
+    init()
+
+    nTest = int(input())
+
+    for _ in range(nTest):
+        pA, cA, rA, fA, pB, cB, rB, fB, n = map(int, input().split())
+        A, B = pA, pB 
+
+        if(A >= B):
+            print(0)
+            continue
+        
+
+        ans = -1
+        for m in range(1, n+1):
+            A = A * (10000 + rA)/10000 + cA
+            if(A >= fA): A -= fA 
+            else: A = 0
+
+            B = B * (10000 + rB)/10000 + cB
+            if(B >= fB): B -= fB
+            else: B = 0
+
+            if(A >= B):
+                ans = m
+                break 
+        
+        print(ans)
+
+
+    return
+
+solve()
