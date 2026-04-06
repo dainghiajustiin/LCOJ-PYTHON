@@ -1,0 +1,21 @@
+import sys
+
+TASK = "SumExpo"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+S, P = 0, 0
+n = int(sys.stdin.read())
+
+for i in range(2, int(n**0.5) + 1):
+    if(n % i == 0):
+        cnt = 0
+        while(n % i == 0): 
+            cnt += 1
+            n //= i 
+        if(cnt & 1): P += cnt 
+        else: S += cnt 
+if(n > 1): P += 1 
+
+print(S)
+print(P)
