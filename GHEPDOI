@@ -1,0 +1,12 @@
+import sys
+
+n, m = map(int, input().split())
+lst = list(map(int, input().split()))
+pre = [lst[0]]
+
+for elm in lst:
+    pre.append(max(pre[-1], elm))
+
+for _ in range(m):
+    pos = int(input())
+    print(pre[pos])
