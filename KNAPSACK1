@@ -1,0 +1,16 @@
+import sys
+
+n, w = map(int, input().split())
+weight, value = [], []
+dp = [0] * (w + 1)
+
+for i in range(n):
+    wi, vi = map(int, input().split())
+    weight.append(wi)
+    value.append(vi)
+
+for i in range(n):
+    for j in range(w, weight[i] - 1, -1):
+        dp[j] = max(dp[j], dp[j - weight[i]] + value[i])
+
+print(dp[w])
