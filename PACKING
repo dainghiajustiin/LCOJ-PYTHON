@@ -1,0 +1,11 @@
+import sys
+
+n, V = map(int, input().split())
+lst = list(map(int, input().split()))
+dp = [0] * (V + 1)
+
+for i in range(n):
+    for j in range(V, lst[i] - 1, -1):
+        dp[j] = max(dp[j], dp[j - lst[i]] + lst[i])
+
+print(dp[-1])
