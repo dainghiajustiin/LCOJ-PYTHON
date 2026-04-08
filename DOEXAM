@@ -1,0 +1,24 @@
+import sys
+
+n, k = map(int, input().split())
+lst = list(map(int, input().split()))
+ans = 0
+
+def ql(pos: int, len: int, sum: int, canDo: int, pre_bit: int) -> None:
+    global ans 
+    if(pos >= len):
+        ans = max(ans, sum)
+        return 
+    
+    if(canDo > 0):
+        if(pre_bit == 0):
+            ans = max(ans, sum)
+        else:
+            ql(pos + 1, len, sum, canDo, 0)
+        
+        ql(pos + 1, len, sum + lst[pos], canDo - 1, 1)
+    else:
+        ans = max(ans, sum)
+
+ql(0, n, 0, k, 1)
+print(ans)
