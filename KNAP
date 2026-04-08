@@ -1,0 +1,16 @@
+import sys
+
+n, m = map(int, input().split())
+w, v = [], []
+dp = [0] * (m + 1)
+
+for i in range(n):
+    x, y = map(int, input().split())
+    w.append(x)
+    v.append(y)
+
+for i in range(n):
+    for j in range(m, w[i] - 1, -1):
+        dp[j] = max(dp[j], dp[j - w[i]] + v[i])
+
+print(dp[m])
