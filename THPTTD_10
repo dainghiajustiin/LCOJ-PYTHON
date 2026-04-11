@@ -1,0 +1,38 @@
+import sys
+
+TASK = "UOCNT"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+MAXN = 10**6 + 7
+lp = [0] * MAXN 
+pr = []
+
+def init():
+    for i in range(2, MAXN):
+        if(lp[i] == 0):
+            pr.append(i)
+            lp[i] = i
+        
+        for j in pr:
+            if(i*j >= MAXN): break
+            lp[i*j] = j
+            if(j == lp[i]): break 
+
+init()
+
+dataInput = sys.stdin.read().split()
+nQuery = int(dataInput[0])
+curID = 1
+result = []
+
+for i in range(nQuery):
+    n = int(dataInput[curID])
+    curID += 1 
+    ans = 0
+    while(n > 1):
+        ans = max(ans, lp[n])
+        n //= lp[n]
+    result.append(str(ans))
+
+sys.stdout.write("\n".join(result))
