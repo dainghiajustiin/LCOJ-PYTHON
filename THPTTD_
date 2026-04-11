@@ -1,0 +1,17 @@
+import sys
+import bisect
+
+TASK = "treelamp"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+n = int(input())
+lst = list(map(int, input().split()))
+dp = []
+
+for elm in lst:
+    pos = bisect.bisect_left(dp, elm)
+    if(pos >= len(dp)): dp.append(elm)
+    else: dp[pos] = min(dp[pos], elm)
+
+print(len(dp))
