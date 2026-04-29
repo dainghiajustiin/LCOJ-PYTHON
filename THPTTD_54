@@ -1,0 +1,14 @@
+import sys
+
+TASK = "doixung"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+lst = list(map(str, sys.stdin.read().split()))
+ans = 0
+
+for elm in lst:
+    if(elm == elm[::-1]):
+        ans = max(ans, len(elm))
+    
+print(ans)
