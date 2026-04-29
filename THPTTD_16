@@ -1,0 +1,9 @@
+import sys
+
+n = int(input())
+cnt = 0
+while(n > 0):
+    if(n % 10 == 5 or n % 10 == 9): cnt += 1
+    n //= 10
+
+print("YES" if (cnt == 5 or cnt == 9) else "NO")
