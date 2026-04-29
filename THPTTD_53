@@ -1,0 +1,15 @@
+import sys
+
+TASK = "tich"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+a, b = map(int, input().split())
+ans = 0
+
+while(a > 1):
+    if(a & 1 == 0): ans += b 
+    a >>= 1
+    b <<= 1 
+
+print(ans)
