@@ -1,0 +1,25 @@
+import sys
+
+TASK = "chenhlech"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+dataInput = sys.stdin.read().split()
+N = int(dataInput[0])
+lst = [[int(dataInput[i]), int(dataInput[i+1])] for i in range(1, 2*N + 1, 2)]
+dct = {0 : 0}
+best = 0 
+
+for i in range(N):
+    v = abs(lst[i][0] - lst[i][1])
+
+    if(v in dct): dct[v] += 1
+    else: dct.update({v : 1})
+    
+    if(dct[best] == dct[v] and best > v): best = v 
+    if(dct[best] < dct[v]): best = v 
+
+print(best)
+for i in range(N):
+    v = abs(lst[i][0] - lst[i][1])
+    if(v == best): print(lst[i][0], lst[i][1])
