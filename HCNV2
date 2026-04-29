@@ -1,0 +1,47 @@
+import sys
+
+class point:
+    def __init__(self, x, y):
+        self._x = x 
+        self._y = y 
+
+    @property
+    def x(self):
+        return self._x 
+    
+    @x.setter 
+    def x(self, newx):
+        self._x = newx 
+
+    @property
+    def y(self):
+        return self._y 
+
+    @y.setter
+    def y(self, newy):
+        self._y = newy 
+
+A = point(0, 0)
+B = point(0, 0)
+C = point(0, 0)
+D = point(0, 0)
+
+A.x, A.y, B.x, B.y = list(map(int, input().split()))
+C.x, C.y, D.x, D.y = list(map(int, input().split()))
+
+if(A.x > B.x): A.x, B.x = B.x, A.x 
+if(A.y > B.y): A.y, B.y = B.y, A.y 
+if(C.x > D.x): C.x, D.x = D.x, C.x 
+if(C.y > D.y): C.y, D.y = D.y, C.y 
+
+if(A.x >= D.x or C.x >= B.x):
+    print(0)
+    sys.exit()
+
+if(A.y >= D.y or C.y >= B.y):
+    print(0)
+    sys.exit()
+
+a = abs(min(D.x, B.x) - max(C.x, A.x))
+b = abs(min(D.y, B.y) - max(C.y, A.y))
+print(a * b)
