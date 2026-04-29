@@ -1,0 +1,8 @@
+import sys
+
+TASK = "TONG"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+n = int(input())
+print(n*(n-1)//2)
