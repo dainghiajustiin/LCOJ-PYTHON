@@ -1,0 +1,14 @@
+import sys
+
+TASK = "change"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+n = int(input())
+ans = 0 
+while(n > 1):
+    ans += 1 
+    if(n & 1): n = 3*n + 1 
+    else: n //= 2
+
+print(ans)
