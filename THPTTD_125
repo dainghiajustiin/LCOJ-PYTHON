@@ -1,0 +1,14 @@
+import sys
+
+TASK = "khacnhau"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+lst = list(map(int, sys.stdin.read().split()))
+lst.sort()
+ans = len(lst)
+
+for i in range(1, len(lst)):
+    if(lst[i] == lst[i-1]): ans -= 1 
+
+print(ans)
