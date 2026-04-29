@@ -1,0 +1,24 @@
+import sys
+
+TASK = "BDEL"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+dataInput = sys.stdin.read().split()
+nQuery = int(dataInput[0])
+curID = 1
+result = []
+
+for _ in range(nQuery):
+    N = int(dataInput[curID])
+    lst = [int(dataInput[i]) for i in range(curID + 1, curID + 1 + N)]
+    curID += N + 1
+    dct = {}
+    ans = []
+    for elm in lst:
+        if(not elm in dct):
+            ans.append(str(elm))
+            dct.update({elm : True})
+    result.append(" ".join(ans))
+
+sys.stdout.write("\n".join(result))
