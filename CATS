@@ -1,0 +1,12 @@
+import sys
+
+nQuery = int(input())
+
+for _ in range(nQuery):
+    a, b, c = list(map(int, input().split()))
+    fa = abs(c - a)
+    fb = abs(c - b)
+
+    if(fa > fb): print("Cat B\n")
+    elif(fa < fb): print("Cat A\n")
+    else: print("Mouse C\n")
