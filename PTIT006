@@ -1,0 +1,31 @@
+import sys
+
+n = int(input())
+x = [0, 1, 0, -1]
+y = [1, 0, -1, 0]
+f = [[-1] * (n + 2) for i in range(n + 2)]
+
+for i in range(1, n+1):
+    for j in range(1, n+1): f[i][j] = 0 
+
+u, v, mod = 1, 1, 0
+cnt = 0 
+while(cnt < n*n):
+    cnt += 1
+    f[u][v] = cnt 
+
+    nxtu = u + x[mod]
+    nxtv = v + y[mod]
+
+    if(f[nxtu][nxtv] != 0):
+        mod = (mod + 1) % 4 
+        nxtu = u + x[mod]
+        nxtv = v + y[mod]   
+    
+    u = nxtu 
+    v = nxtv 
+
+for i in range(1, n+1):
+    for j in range(1, n+1):
+        print(f[i][j], end=" ")
+    print()
