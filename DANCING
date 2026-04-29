@@ -1,0 +1,7 @@
+import sys
+
+n = int(input())
+a =2*n + 2*(n - 2)
+b = n**2 - a
+
+print(a, b)
