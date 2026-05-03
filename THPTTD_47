@@ -1,0 +1,23 @@
+import sys
+
+TASK = "fibsum"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+M, K = map(int, input().split())
+f = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+ans = 0
+
+def BFS(pos: int, curCnt: int, curSum: int):
+    global ans
+    if(curSum > M): return
+    if(pos == len(f)): 
+        if(curSum == M): ans += 1
+        return 
+    
+    if(curCnt + 1 <= K): BFS(pos, curCnt + 1, curSum + f[pos])
+    BFS(pos + 1, 0, curSum)
+
+
+BFS(0, 0, 0)
+print(ans)
