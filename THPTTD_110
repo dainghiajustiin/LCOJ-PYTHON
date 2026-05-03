@@ -1,0 +1,13 @@
+import sys
+
+TASK = "game"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+nQuery = int(input())
+for _ in range(nQuery):
+    X, Y, N = list(map(int, input().split()))
+    N %= 2
+    if(N&1): X *= 2
+    if(X < Y): X, Y = Y, X 
+    print(X//Y)
