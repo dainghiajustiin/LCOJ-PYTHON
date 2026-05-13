@@ -1,0 +1,44 @@
+import sys
+
+n, q = map(int, input().split())
+lst = [int(x) for x in input().split()]
+result = [0] * (q)
+queries = [] 
+blockSize = int(n**0.5)
+
+for i in range(q):
+    l, r = map(int, input().split())
+    queries.append([l - 1, r - 1, i])
+queries.sort(key = lambda x: (x[0]//blockSize, x[1]))
+
+curAns = 0
+curSum = 0
+L, R = 0, -1
+
+for i in range(q):
+    curL, curR = queries[i][0], queries[i][1]
+
+    while(R < curR):
+        R += 1
+        curAns += curSum * lst[R]
+        curSum += lst[R] 
+
+    while(L > curL):
+        L -= 1 
+        curAns += curSum * lst[L]
+        curSum += lst[L]
+    
+    while(R > curR):
+        curSum -= lst[R]
+        curAns -= curSum * lst[R]
+        R -= 1
+
+    while(L < curL):
+        curSum -= lst[L]
+        curAns -= curSum * lst[L] 
+        L += 1
+
+    result[queries[i][2]] = curAns
+
+for i in range(q):
+    print(result[i])
