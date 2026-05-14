@@ -1,0 +1,23 @@
+import sys
+
+TASK = "matkhau"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+n = int(input())
+result = []
+cntChar = [0] * 26
+
+for _ in range(n):
+    S = input()
+    for i in range(26):
+        cntChar[i] = 0
+
+    for elm in S:
+        cntChar[ord(elm) - ord('A')] += 1
+
+    for i in range(26):
+        if(cntChar[i] == 1):
+            result.append(chr(i + ord('A')))
+
+sys.stdout.write("".join(result))
