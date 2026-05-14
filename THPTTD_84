@@ -1,0 +1,52 @@
+import sys
+from random import randint as r 
+
+TASK = "doixung"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+S = input()
+revS = S[::-1]
+n, ans = len(S), 0
+S, revS = ' ' + S, ' ' + revS
+
+BASE = r(1234567, 23456789)
+MOD = r(10**9 + 7, 10**9 + 31)
+HASH, revHASH = [0] * (n + 1), [0] * (n + 1) 
+PW = [0] * (n + 1) 
+
+PW[0] = 1
+for i in range(1, n + 1):
+    PW[i] = PW[i-1] * BASE % MOD 
+
+for i in range(1, n + 1):
+    HASH[i] = (HASH[i-1] * BASE + ord(S[i])) % MOD 
+    revHASH[i] = (revHASH[i-1] * BASE + ord(revS[i])) % MOD 
+
+def check(size: int) -> bool:
+    for i in range(1, n - size + 2):
+        L, R = i, i + size - 1
+        sum1 = (HASH[R] - HASH[L-1] * PW[R-L+1] + MOD*MOD) % MOD 
+        sum2 = (revHASH[n-L+1] - revHASH[n-R] * PW[R-L+1] + MOD*MOD) % MOD 
+        if(sum1 == sum2): return True 
+    return False 
+
+lo, hi = 0, (n-1)//2
+while(lo <= hi):
+    mid = (lo + hi) >> 1
+    if(check(mid*2 + 1)):
+        lo = mid + 1 
+        ans = max(ans, mid*2 + 1)
+    else:
+        hi = mid - 1 
+
+lo, hi = 1, n//2
+while(lo <= hi):
+    mid = (lo + hi) >> 1
+    if(check(mid*2)):
+        lo = mid + 1 
+        ans = max(ans, mid*2)
+    else:
+        hi = mid - 1 
+
+print(ans)
