@@ -1,0 +1,35 @@
+import sys
+
+TASK = "muave"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+n, k, m = map(int, input().split())
+lst = [int(x) for x in input().split()]
+cnt = [0] * n 
+notValid = 0
+
+for i in range(n):
+    if(m > 0):
+        cnt[i] += 1
+        m -= 1
+        if(lst[i] > k):
+            notValid += 1
+
+if(notValid == 0):
+    for elm in cnt:
+        print(elm, end = ' ')
+
+else:
+    div = m // notValid
+    mod = m % notValid
+
+    for i in range(n):
+        if(lst[i] > k):
+            cnt[i] += div 
+            if(mod > 0):
+                cnt[i] += 1 
+                mod -= 1 
+    
+    for elm in cnt:
+        print(elm, end = ' ')
