@@ -1,0 +1,12 @@
+import sys
+
+TASK = "nine"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+nQuery = int(input())
+
+for _ in range(nQuery):
+    n = int(input())
+    ans = (10**n - 1)**2
+    print(ans)
