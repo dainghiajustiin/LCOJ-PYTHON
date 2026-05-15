@@ -1,0 +1,31 @@
+import sys
+
+TASK = "lcm"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+n = int(input())
+ans = 1
+
+def gcd(a: int, b: int) -> int:
+    while(b != 0):
+        a, b = b, a%b 
+    return a 
+
+def getLCM(a, b, c):
+    g1 = gcd(a, b)
+    l1 = a*b//g1
+    g2 = gcd(b, c)
+    l2 = b*c//g2
+    g3 = gcd(l1, l2)
+    if(g3 == 0): return 0
+    return l1*l2//g3
+for i in range(n+1):
+    a = i 
+    b = abs(i - 1)
+    c = abs(i - 2)
+    d = abs(i - 3)
+    e = abs(i - 4)
+    ans = max(ans, getLCM(a, b, c), getLCM(a, b, d), getLCM(a, b, e))
+
+print(ans)
