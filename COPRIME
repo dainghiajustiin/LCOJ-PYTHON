@@ -1,0 +1,13 @@
+import sys
+
+TASK = "COPRIME"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+def gcd(a: int, b: int) -> int:
+    while(b > 0):
+        a, b = b, a%b 
+    return a 
+
+a, b = map(int, input().split())
+print("YES" if gcd(a, b) == 1 else "NO")
