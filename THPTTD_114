@@ -1,0 +1,13 @@
+import sys
+
+TASK = "bwater"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+lst = [int(x) for x in input().split()]
+n = int(input())
+
+even = n//2
+odd = n - even*2
+ans = even * min(lst[0]*8, lst[1]*4, lst[2]*2, lst[3]) + odd * min(lst[0]*4, lst[1]*2, lst[2])
+print(ans)
