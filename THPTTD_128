@@ -1,0 +1,44 @@
+import sys
+
+TASK = "Aperm"
+sys.stdin = open(TASK + ".inp", "r")
+sys.stdout = open(TASK + ".out", "w")
+
+input = sys.stdin.read().split()
+
+n, k = int(input[0]), int(input[1])
+lst = [int(input[i]) for i in range(2, n + 2)]
+BIT = [0] * (n + 1)
+result = []
+curMax = 0
+
+def add(idx: int) -> None:
+    while(idx <= n):
+        BIT[idx] += 1 
+        idx += idx&-idx 
+
+def get(idx: int) -> int:
+    res = 0
+    while(idx > 0):
+        res += BIT[idx]
+        idx -= idx&-idx 
+    return res 
+
+for i in range(k-1):
+    add(lst[i])
+
+for i in range(k-1, n):
+    add(lst[i])
+    ans = 0
+    lo, hi = 1, n
+    
+    while(lo <= hi):
+        mid = (lo + hi) >> 1
+        if(get(n) - get(mid) <= k - 1):
+            ans = mid 
+            hi = mid - 1
+        else:
+            lo = mid + 1 
+    result.append(str(ans))
+
+sys.stdout.write("\n".join(result))
